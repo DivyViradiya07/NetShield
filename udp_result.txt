@@ -1,0 +1,4 @@
+# Nmap 7.80 scan initiated Mon Jun 23 08:22:23 2025 as: nmap -sU --top-ports 20 -oG - 192.168.0.191
+Host: 192.168.0.191 ()	Status: Up
+Host: 192.168.0.191 ()	Ports: 53/open|filtered/udp//domain///, 67/open|filtered/udp//dhcps///, 68/open|filtered/udp//dhcpc///, 69/open|filtered/udp//tftp///, 123/open|filtered/udp//ntp///, 135/open|filtered/udp//msrpc///, 137/open|filtered/udp//netbios-ns///, 138/open|filtered/udp//netbios-dgm///, 139/open|filtered/udp//netbios-ssn///, 161/open|filtered/udp//snmp///, 162/open|filtered/udp//snmptrap///, 445/open|filtered/udp//microsoft-ds///, 500/open|filtered/udp//isakmp///, 514/open|filtered/udp//syslog///, 520/open|filtered/udp//route///, 631/open|filtered/udp//ipp///, 1434/open|filtered/udp//ms-sql-m///, 1900/open|filtered/udp//upnp///, 4500/open|filtered/udp//nat-t-ike///, 49152/open|filtered/udp//unknown///
+# Nmap done at Mon Jun 23 08:22:38 2025 -- 1 IP address (1 host up) scanned in 14.89 seconds
