@@ -8,26 +8,27 @@ import tkinter as tk
 from tkinter import messagebox, scrolledtext, ttk # Import ttk for Treeview
 import psutil
 import threading
+import re # For IP address validation
 
 # Globals
-# open_ports stores a list of dictionaries, each with 'port', 'service', 'version', and 'protocol'
+# open_ports stores a list of dictionaries, each with 'port', 'service', 'version', 'protocol', and 'process_name'
 open_ports = {"TCP": [], "UDP": []}
-current_protocol = "TCP"  # Default protocol state (can be TCP, UDP, or Combined conceptually)
 whitelisted_ports = set()
+animation_id = None # Global to store the ID of the current animation job
 
 # Elevation
 def is_admin():
     """Checks if the script is running with administrative privileges."""
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
+    except Exception as e:
+        log(f"[!] Error checking admin privileges: {e}")
         return False
 
 def elevate_if_needed():
     """Elevates the script to administrator privileges if not already running as admin."""
     if not is_admin():
-        # Re-launch the script with 'runas' verb for elevation
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{__file__}"', None, 1)
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, f'"{os.path.abspath(__file__)}"', None, 1)
         sys.exit()
 
 # Logging
@@ -42,14 +43,30 @@ def log(message):
     with open("agent_log.txt", 'a', encoding='utf-8') as f:
         f.write(full)
 
+# Loading Scan Indicators (now only manages text label)
+def start_scan_indicators():
+    """Starts the loading label text."""
+    loading_label.config(text="Scanning...", fg="yellow")
+
+def stop_scan_indicators():
+    """Stops the loading label text."""
+    loading_label.config(text="Scan complete.", fg="lightgreen")
+
 # GUI State Control
 def set_buttons_state(state):
-    """Sets the state (normal/disabled) of all main action buttons."""
+    """Sets the state (normal/disabled) of all main action buttons and controls loading indicator."""
     for btn in buttons:
         btn.configure(state=state)
     add_btn.configure(state=state)
     whitelist_entry.configure(state=state)
-    close_btn.configure(state=state) # Add the close button to state control
+    close_btn.configure(state=state)
+    target_ip_entry.configure(state=state)
+    clear_log_btn.configure(state=state)
+
+    if state == "disabled":
+        start_scan_indicators()
+    else:
+        stop_scan_indicators()
 
 # Network Helpers
 def get_local_ip():
@@ -65,11 +82,36 @@ def get_local_ip():
                 return addr.address
     return "127.0.0.1" # Fallback to loopback if no suitable IP found
 
+def is_valid_ip_or_range(target):
+    """
+    Validates if the input is a valid IP address, CIDR range, or IP range.
+    Basic validation for common formats.
+    """
+    ip_regex = r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"
+    cidr_regex = r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}\/(?:[0-9]|[1-2][0-9]|3[0-2])$"
+    ip_range_regex = r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}-(?:[0-9]{1,3})$"
+
+    if re.match(ip_regex, target):
+        octets = target.split('.')
+        if all(0 <= int(octet) <= 255 for octet in octets):
+            return True
+    elif re.match(cidr_regex, target):
+        ip_part, cidr_part = target.split('/')
+        octets = ip_part.split('.')
+        if all(0 <= int(octet) <= 255 for octet in octets):
+            return True
+    elif re.match(ip_range_regex, target):
+        parts = target.split('-')
+        first_ip_octets = parts[0].split('.')
+        if all(0 <= int(octet) <= 255 for octet in first_ip_octets) and 0 <= int(parts[1]) <= 255:
+            return True
+    
+    return False
+
 def is_docker_available():
     """Checks if Docker is installed and accessible on the system."""
     try:
-        # Check if docker command itself is available AND if the daemon is reachable
-        subprocess.check_output(['docker', 'info'], text=True, stderr=subprocess.PIPE)
+        subprocess.check_output(['docker', 'info'], text=True, stderr=subprocess.PIPE, creationflags=subprocess.CREATE_NO_WINDOW)
         return True
     except subprocess.CalledProcessError as e:
         log(f"[!] Docker daemon not running or not accessible: {e.stderr.strip() if e.stderr else 'No stderr output'}")
@@ -81,26 +123,103 @@ def is_docker_available():
         log(f"[!] An unexpected error occurred while checking Docker: {e}")
         return False
 
+def ensure_nmap_docker_image():
+    """
+    Checks if the uzyexe/nmap Docker image is present. If not, attempts to pull it.
+    Returns True if the image is available (or successfully pulled), False otherwise.
+    """
+    image_name = "uzyexe/nmap"
+    log(f"[*] Checking for Docker image: {image_name}...")
+    try:
+        result = subprocess.run(['docker', 'images', '-q', image_name], capture_output=True, text=True, check=False, creationflags=subprocess.CREATE_NO_WINDOW)
+        if result.stdout.strip():
+            log(f"[✓] Docker image {image_name} is already present locally.")
+            return True
+        else:
+            log(f"[*] Docker image {image_name} not found locally. Attempting to pull...")
+            pull_result = subprocess.run(['docker', 'pull', image_name], capture_output=True, text=True, check=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            log(f"[+] Successfully pulled Docker image: {image_name}")
+            return True
+    except subprocess.CalledProcessError as e:
+        log(f"[!] Failed to pull Docker image {image_name}: {e.stderr.strip() if e.stderr else 'No detailed error.'}")
+        return False
+    except FileNotFoundError:
+        log("[!] Docker command not found. Cannot check or pull Docker image.")
+        return False
+    except Exception as e:
+        log(f"[!] An unexpected error occurred during Docker image management: {e}")
+        return False
+
+def get_process_info_for_port(port_num):
+    """
+    Attempts to find the process name listening on a specific TCP port on Windows.
+    Returns the process name or "N/A" if not found/error.
+    Requires administrator privileges.
+    """
+    process_name = "N/A"
+    try:
+        # Step 1: Get PID using netstat
+        # Using a regex to robustly find the PID in netstat output for LISTENING state
+        netstat_cmd = ['netstat', '-ano']
+        netstat_output = subprocess.check_output(netstat_cmd, text=True, creationflags=subprocess.CREATE_NO_WINDOW, stderr=subprocess.PIPE)
+        
+        pid_regex = re.compile(r".*?\s+TCP\s+[\d\.]+:(" + re.escape(str(port_num)) + r")\s+[\d\.]+:[\d]+\s+LISTENING\s+(\d+)")
+        
+        pid = None
+        for line in netstat_output.splitlines():
+            match = pid_regex.match(line)
+            if match:
+                pid = match.group(2) # Extract the PID
+                break
+
+        if pid:
+            # Step 2: Get process name using tasklist
+            tasklist_cmd = ['tasklist', '/FI', f"PID eq {pid}", '/FO', 'CSV', '/NH']
+            tasklist_output = subprocess.check_output(tasklist_cmd, text=True, creationflags=subprocess.CREATE_NO_WINDOW, stderr=subprocess.PIPE)
+            
+            if tasklist_output.strip():
+                # tasklist /FO CSV /NH output format: "ImageName","PID","SessionName","Session#","MemUsage"
+                # We want the ImageName (first field)
+                # Ensure we handle cases where ImageName might contain commas or other special chars by looking for quoted string
+                process_name_match = re.match(r'^\"([^\"]+)\"', tasklist_output.strip())
+                if process_name_match:
+                    process_name = process_name_match.group(1)
+                else:
+                    process_name = "Unknown (PID " + pid + ")"
+            else:
+                process_name = "No process found (PID " + pid + ")"
+        else:
+            process_name = "No listening PID"
+
+    except subprocess.CalledProcessError as e:
+        log(f"[!] Error getting process info for port {port_num}: {e.stderr.strip()}")
+        process_name = "Error (Cmd Failed)"
+    except FileNotFoundError:
+        log("[!] netstat or tasklist command not found. Cannot determine process info.")
+        process_name = "Error (Cmd Missing)"
+    except Exception as e:
+        log(f"[!] Unexpected error getting process info for port {port_num}: {e}")
+        process_name = "Error"
+    
+    return process_name
+
 # Nmap Scanning
 def run_nmap_scan(target_ip, output_file='scan_result.txt', protocol_type="TCP"):
     """
-    Runs an Nmap scan for a specific protocol (TCP or UDP) on the target IP
+    Runs an Nmap scan for a specific protocol (TCP or UDP) on the target IP/range
     using a Docker container, including service version detection (-sV) and aggressive timing.
-    It now scans the top 1000 common ports for the specified protocol (default Nmap behavior).
+    It scans the top 1000 common ports for the specified protocol (default Nmap behavior).
     """
     scan_type_display = protocol_type.upper()
-    # Changed log message to reflect "Top 1000 Ports"
     log(f"[+] Running {scan_type_display} Nmap scan (Top 1000 Ports) on {target_ip} ...")
 
     try:
         flags = ['-sU'] if protocol_type == "UDP" else ['-sS'] # -sU for UDP, -sS for TCP SYN scan
         
-        # Include -sV for service detection, -Pn to skip host discovery, -T4 for aggressive timing.
-        # Removed '-p', '1-65535' to revert to Nmap's default top 1000 common ports scan.
         cmd = ['docker', 'run', '--rm', 'uzyexe/nmap'] + flags + ['-sV', '-Pn', '-T4', '-oG', '-', target_ip]
         
-        result = subprocess.check_output(cmd, text=True, stderr=subprocess.PIPE) # Capture stdout and stderr
-        with open(output_file, 'w', encoding='utf-8') as f: # Save raw Nmap output
+        result = subprocess.check_output(cmd, text=True, stderr=subprocess.PIPE, creationflags=subprocess.CREATE_NO_WINDOW)
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write(result)
         log(f"[+] {scan_type_display} Scan complete. Results saved to {output_file}")
         return output_file
@@ -119,10 +238,9 @@ def run_nmap_scan(target_ip, output_file='scan_result.txt', protocol_type="TCP")
 def extract_open_ports(filename, protocol_type):
     """
     Parses the Nmap greppable output to extract open ports along with their
-    detected service and version information and protocol type.
+    detected service and version information, protocol type, and process name for TCP.
     Updates the global open_ports dictionary for the specified protocol.
     """
-    # Clear previous scan results for the specific protocol
     open_ports[protocol_type].clear()
 
     try:
@@ -134,50 +252,43 @@ def extract_open_ports(filename, protocol_type):
 
                     for p_str in port_entries:
                         p_str = p_str.strip()
-                        if 'open' in p_str: # Ensure the port is marked as open
+                        if 'open' in p_str:
                             parts = p_str.split('/')
-                            # Expected format: port/state/protocol//service//version/
-                            if len(parts) >= 7:
-                                port_num = parts[0]
-                                protocol = parts[2].upper()
-                                service = parts[4].strip() if parts[4].strip() else 'unknown'
-                                version = parts[6].strip() if parts[6].strip() else ''
+                            
+                            port_num = parts[0]
+                            protocol = parts[2].upper()
+                            service = parts[4].strip() if len(parts) > 4 and parts[4].strip() else 'unknown'
+                            version = parts[6].strip() if len(parts) > 6 and parts[6].strip() else ''
+                            
+                            process_name = "N/A"
+                            if protocol == "TCP": # Only get process info for TCP ports
+                                process_name = get_process_info_for_port(port_num)
 
-                                # Ensure we only add to the correct protocol list
-                                if protocol == protocol_type:
-                                    open_ports[protocol].append({
-                                        'port': port_num,
-                                        'protocol': protocol,
-                                        'service': service,
-                                        'version': version
-                                    })
-                            elif len(parts) >= 3:
-                                port_num = parts[0]
-                                protocol = parts[2].upper()
-                                if protocol == protocol_type:
-                                    open_ports[protocol].append({
-                                        'port': port_num,
-                                        'protocol': protocol,
-                                        'service': 'N/A',
-                                        'version': ''
-                                    })
+                            if protocol == protocol_type:
+                                open_ports[protocol].append({
+                                    'port': port_num,
+                                    'protocol': protocol,
+                                    'service': service,
+                                    'version': version,
+                                    'process_name': process_name
+                                })
 
     except FileNotFoundError:
         log(f"[!] Scan result file '{filename}' not found for {protocol_type} port extraction.")
     except Exception as e:
         log(f"[!] Error extracting {protocol_type} open ports from file: {e}")
-    return open_ports[protocol_type] # Return the updated list for the protocol
+    return open_ports[protocol_type]
 
 # Firewall Management
 def block_port_windows(port, protocol="TCP"):
     """Blocks a specified port and protocol using Windows Defender Firewall."""
-    rule_name = f"Block_NetShield_{protocol}_Port_{port}" # Unique rule name
+    rule_name = f"Block_NetShield_{protocol}_Port_{port}"
     cmd = [
         "powershell", "-Command",
         f"New-NetFirewallRule -DisplayName '{rule_name}' -Direction Inbound -LocalPort {port} -Protocol {protocol} -Action Block -Enabled True"
     ]
     try:
-        subprocess.run(cmd, capture_output=True, text=True, check=True)
+        subprocess.run(cmd, capture_output=True, text=True, check=True, creationflags=subprocess.CREATE_NO_WINDOW)
         log(f"[+] Firewall rule '{rule_name}' created to block {protocol} port {port}.")
         return True
     except subprocess.CalledProcessError as e:
@@ -189,41 +300,56 @@ def is_port_blocked(port, protocol="TCP"):
     rule_name = f"Block_NetShield_{protocol}_Port_{port}"
     cmd = ["powershell", "-Command", f"Get-NetFirewallRule -DisplayName '{rule_name}'"]
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        # Check for 'Enabled' property in the output. PowerShell Get-NetFirewallRule usually outputs table.
-        return "Enabled" in result.stdout and "True" in result.stdout # Ensure it's explicitly enabled
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, creationflags=subprocess.CREATE_NO_WINDOW)
+        return "Enabled" in result.stdout and "True" in result.stdout
     except subprocess.CalledProcessError:
-        return False # Rule not found or error occurred
+        return False
 
 # GUI Actions (threaded for responsiveness)
 def detect_ip():
-    """Initiates IP detection in a separate thread."""
+    """Initiates local IP detection in a separate thread."""
     def task():
         set_buttons_state("disabled")
         ip = get_local_ip()
-        ip_var.set(ip)
-        log(f"[+] IP Detected: {ip}")
+        local_ip_var.set(ip)
+        log(f"[+] Local IP Detected: {ip}")
         set_buttons_state("normal")
     threading.Thread(target=task, daemon=True).start()
 
 def handle_scan_button_click(protocol_type):
-    """Initiates an Nmap scan for the specified protocol in a separate thread."""
+    """Initiates an Nmap scan for the specified protocol on the chosen target in a separate thread."""
+    set_buttons_state("disabled")
+
     def task():
-        set_buttons_state("disabled")
+        target = target_ip_var.get().strip()
+        if not target:
+            target = local_ip_var.get()
+            if target == "Not detected" or not target:
+                log("[!] No target IP/range entered and local IP not detected. Please detect IP or enter a target.")
+                set_buttons_state("normal")
+                return
+            log(f"[*] Target IP/Range not specified, defaulting to local IP: {target}")
+        
+        if not is_valid_ip_or_range(target):
+            messagebox.showerror("Invalid Input", "Please enter a valid IP address (e.g., 192.168.1.100), CIDR range (e.g., 192.168.1.0/24), or IP range (e.g., 192.168.1.1-254).")
+            log(f"[!] Invalid target input: {target}")
+            set_buttons_state("normal")
+            return
+
         if not is_docker_available():
             messagebox.showerror("Docker Issue", "Docker is not available or not running. Please check the log for details.")
             set_buttons_state("normal")
             return
-        target = ip_var.get()
-        if target == "Not detected" or not target:
-            log("[!] Please detect IP address first.")
+        
+        if not ensure_nmap_docker_image():
+            messagebox.showerror("Docker Image Error", "Failed to ensure Nmap Docker image is available. Please check the log for details.")
             set_buttons_state("normal")
             return
 
-        file = run_nmap_scan(target, protocol_type=protocol_type) # Call with protocol type
+        file = run_nmap_scan(target, protocol_type=protocol_type)
         if file:
-            extract_open_ports(file, protocol_type) # Extract specifically for this protocol
-            update_ports_display() # Update display with *all* currently known ports
+            extract_open_ports(file, protocol_type)
+            update_ports_display()
         set_buttons_state("normal")
     threading.Thread(target=task, daemon=True).start()
 
@@ -241,7 +367,7 @@ def handle_block():
         log(f"[*] Attempting to block {len(all_ports_to_block_info)} detected ports...")
         for p_info in all_ports_to_block_info:
             port = p_info['port']
-            protocol = p_info['protocol'] # Use the protocol from the stored info
+            protocol = p_info['protocol']
             if port in whitelisted_ports:
                 log(f"[~] Skipping whitelisted {protocol} port {port}.")
                 continue
@@ -268,33 +394,53 @@ def verify_ports_closed():
             set_buttons_state("normal")
             return
 
-        ip = ip_var.get()
-        if ip == "Not detected" or not ip:
-            log("[!] Cannot verify ports without a detected IP address.")
-            set_buttons_state("normal")
-            return
+        target = target_ip_var.get().strip()
+        if not target:
+            target = local_ip_var.get()
+            if target == "Not detected" or not target:
+                log("[!] Cannot verify ports without a detected IP address or a target entered.")
+                set_buttons_state("normal")
+                return
+        
+        if '-' in target or '/' in target:
+            log("[!] Port verification is most reliable for single IP addresses. Proceeding with the primary IP in the range if detectable.")
+            try:
+                if '/' in target:
+                    target_ip = target.split('/')[0]
+                elif '-' in target:
+                    target_ip = target.split('-')[0]
+                else:
+                    target_ip = target
+            except Exception:
+                target_ip = None
 
-        log(f"[*] Verifying all detected port status on {ip}...")
+            if not is_valid_ip_or_range(target_ip):
+                log(f"[!] Could not determine a single IP from the target range '{target}' for verification. Skipping verification.")
+                set_buttons_state("normal")
+                return
+            else:
+                target = target_ip
+
+        log(f"[*] Verifying all detected port status on {target}...")
         for p_info in all_ports_to_verify_info:
             port = p_info['port']
-            protocol = p_info['protocol'] # Use the protocol from the stored info
+            protocol = p_info['protocol']
             if port in whitelisted_ports:
                 log(f"[~] Skipping verification for whitelisted {protocol} port {port}.")
                 continue
             
             if protocol == "TCP":
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                    s.settimeout(1) # Short timeout for quick checks
+                    s.settimeout(1)
                     try:
-                        # connect_ex returns 0 if connection succeeds (port is open)
-                        result = s.connect_ex((ip, int(port)))
+                        result = s.connect_ex((target, int(port)))
                         if result == 0:
                             log(f"[!] TCP Port {port} (Service: {p_info['service']}) is still OPEN.")
                         else:
                             log(f"[OK] TCP Port {port} (Service: {p_info['service']}) is CLOSED.")
                     except Exception as e:
                         log(f"[!] Error verifying TCP port {port}: {e}")
-            else: # For UDP, direct socket connection is not reliable for "closed" state
+            else:
                 log(f"[~] UDP Port {port} (Service: {p_info['service']}) verification via socket is limited. Consider re-scanning with Nmap.")
         set_buttons_state("normal")
     threading.Thread(target=task, daemon=True).start()
@@ -303,51 +449,56 @@ def add_to_whitelist():
     """Adds comma-separated port numbers from the input entry to the whitelist."""
     raw_input = whitelist_entry.get().strip()
     if raw_input:
-        # Split by comma, strip spaces, filter for digits only
         ports = [p.strip() for p in raw_input.split(',') if p.strip().isdigit()]
         if ports:
-            whitelisted_ports.update(ports) # Add to the set
-            # Update the whitelist display, sorted for consistency
+            whitelisted_ports.update(ports)
             whitelist_var.set(", ".join(sorted(list(whitelisted_ports))))
             log(f"[~] Whitelisted ports updated: {', '.join(ports)}")
         else:
             log("[!] No valid port numbers found in whitelist input.")
-        whitelist_entry.delete(0, tk.END) # Clear the input field
+        whitelist_entry.delete(0, tk.END)
     else:
         log("[*] Whitelist input is empty.")
 
 def update_ports_display():
-    """Updates the GUI's Treeview with detected open ports and their services/versions."""
-    # Clear existing entries in the Treeview
+    """Updates the GUI's Treeview with detected open ports and their services/versions/process names."""
     for item in tree.get_children():
         tree.delete(item)
 
-    all_ports = sorted(open_ports["TCP"] + open_ports["UDP"], key=lambda x: int(x['port'])) # Sort by port number
+    all_ports = sorted(open_ports["TCP"] + open_ports["UDP"], key=lambda x: int(x['port']))
     
     if not all_ports:
         log("[*] No open ports detected to display.")
         return
 
-    # Add a sequential number to each row
     for i, p_info in enumerate(all_ports, 1):
         port = p_info.get('port', 'N/A')
         protocol = p_info.get('protocol', 'N/A')
         service = p_info.get('service', 'N/A')
         version = p_info.get('version', '')
-        
-        # Insert data into the Treeview
-        tree.insert('', tk.END, values=(i, port, protocol, service, version))
+        process_name = p_info.get('process_name', 'N/A')
+
+        tree.insert('', tk.END, values=(i, port, protocol, service, version, process_name))
+
+def clear_log():
+    """Clears the content of the log output text area."""
+    log_output.configure(state='normal')
+    log_output.delete(1.0, tk.END)
+    log_output.configure(state='disabled')
+    log("[*] Log cleared by user.")
+
 
 # GUI Setup
 elevate_if_needed() # Ensure script runs with admin privileges
 
 root = tk.Tk()
 root.title("NetShield - Port Scanner & Blocker")
-root.geometry("1000x550") # Fixed window size
+root.geometry("800x520") # Fixed window size remains for stability
 root.configure(bg="#1e1e1e") # Dark background
 
 # Tkinter variables for dynamic label updates
-ip_var = tk.StringVar(value="Not detected")
+local_ip_var = tk.StringVar(value="Not detected")
+target_ip_var = tk.StringVar(value="")
 whitelist_var = tk.StringVar(value="None")
 
 # LEFT PANEL (Buttons and Whitelist)
@@ -356,52 +507,62 @@ left_frame.pack(side=tk.LEFT, fill=tk.Y, padx=(10, 0), pady=10)
 
 # Brand/Logo
 brand_frame = tk.Frame(left_frame, bg="#1e1e1e")
-brand_frame.pack(pady=(0, 20))
-tk.Label(brand_frame, text="🛡", font=("Segoe UI Emoji", 26), bg="#1e1e1e", fg="#00e6e6").pack(side=tk.LEFT)
-tk.Label(brand_frame, text="NetShield", font=("Segoe UI", 20, "bold"), bg="#1e1e1e", fg="#00e6e6", padx=10).pack(side=tk.LEFT)
+brand_frame.pack(pady=(0, 15)) # Reduced pady
+tk.Label(brand_frame, text="🛡", font=("Segoe UI Emoji", 24), bg="#1e1e1e", fg="#00e6e6").pack(side=tk.LEFT) # Smaller font
+tk.Label(brand_frame, text="NetShield", font=("Segoe UI", 18, "bold"), bg="#1e1e1e", fg="#00e6e6", padx=10).pack(side=tk.LEFT) # Smaller font
 
 # Main Action Buttons
 buttons = []
-# Define a consistent style for buttons
 btn_style = {
-    "font": ("Segoe UI", 11),
+    "font": ("Segoe UI", 10), # Reduced font
     "width": 25,
-    "anchor": "w", # Align text to west (left)
+    "anchor": "w",
     "padx": 5,
-    "bg": "#3c3c3c", # Dark gray background
-    "fg": "white",   # White text
-    "relief": "groove", # Grooved border
-    "activebackground": "#555", # Darker on click
+    "bg": "#3c3c3c",
+    "fg": "white",
+    "relief": "groove",
+    "activebackground": "#555",
     "activeforeground": "white"
 }
 
 # Create buttons dynamically
 for idx, (text, cmd) in enumerate([
-    ("1. Detect IP", detect_ip),
-    # Changed text to reflect "Top 1000" and ensured no -p flag is added
+    ("1. Detect Local IP", detect_ip),
     ("2A. Scan TCP Ports (Top 1000)", lambda: handle_scan_button_click("TCP")),
     ("2B. Scan UDP Ports (Top 1000)", lambda: handle_scan_button_click("UDP")),
     ("3. Block Detected Ports", handle_block),
     ("4. Verify Ports Are Closed", verify_ports_closed)
 ]):
     btn = tk.Button(left_frame, text=text, command=cmd, **btn_style)
-    btn.pack(pady=(5 if idx != 0 else 0)) # Add padding, except for the first button
+    btn.pack(pady=3) # Reduced pady between buttons
     buttons.append(btn)
+
+# Scan Status Label
+loading_label = tk.Label(left_frame, text="Ready", font=("Segoe UI", 10, "bold"), bg="#1e1e1e", fg="lightgreen") # Reduced font
+loading_label.pack(pady=(8, 8)) # Reduced pady
+
+# Target IP Input Section
+target_ip_frame = tk.Frame(left_frame, bg="#1e1e1e")
+target_ip_frame.pack(pady=(15, 5), fill='x') # Reduced pady
+tk.Label(target_ip_frame, text="Target IP / Range:", fg="white", bg="#1e1e1e", font=("Segoe UI", 9)).pack(anchor='w') # Reduced font
+target_ip_entry = tk.Entry(target_ip_frame, textvariable=target_ip_var, font=("Segoe UI", 9), bg="#333", fg="white", insertbackground="white", width=28, relief="flat", bd=2) # Reduced font
+target_ip_entry.pack(pady=3) # Reduced pady
+buttons.append(target_ip_entry)
 
 # Whitelist Section
 whitelist_frame = tk.Frame(left_frame, bg="#1e1e1e")
-whitelist_frame.pack(pady=(25, 5), fill='x')
-tk.Label(whitelist_frame, text="Whitelist Ports (comma-separated):", fg="white", bg="#1e1e1e", font=("Segoe UI", 10)).pack(anchor='w')
-whitelist_entry = tk.Entry(whitelist_frame, font=("Segoe UI", 10), bg="#333", fg="white", insertbackground="white", width=28, relief="flat", bd=2)
-whitelist_entry.pack(pady=5)
-add_btn = tk.Button(whitelist_frame, text="Add to Whitelist", command=add_to_whitelist, font=("Segoe UI", 10), bg="#444", fg="white", relief="flat", activebackground="#666", activeforeground="white")
+whitelist_frame.pack(pady=(10, 5), fill='x') # Reduced pady
+tk.Label(whitelist_frame, text="Whitelist Ports (comma-separated):", fg="white", bg="#1e1e1e", font=("Segoe UI", 9)).pack(anchor='w') # Reduced font
+whitelist_entry = tk.Entry(whitelist_frame, font=("Segoe UI", 9), bg="#333", fg="white", insertbackground="white", width=28, relief="flat", bd=2) # Reduced font
+whitelist_entry.pack(pady=3) # Reduced pady
+add_btn = tk.Button(whitelist_frame, text="Add to Whitelist", command=add_to_whitelist, font=("Segoe UI", 9), bg="#444", fg="white", relief="flat", activebackground="#666", activeforeground="white") # Reduced font
 add_btn.pack()
 
 # Close GUI Button
-close_btn = tk.Button(left_frame, text="Close GUI", command=root.destroy, font=("Segoe UI", 11), width=25,
-                      bg="#a00000", fg="white", relief="groove", activebackground="#c00000", activeforeground="white")
+close_btn = tk.Button(left_frame, text="Close GUI", command=root.destroy, font=("Segoe UI", 10), width=25, # Reduced font
+                     bg="#a00000", fg="white", relief="groove", activebackground="#c00000", activeforeground="white")
 close_btn.pack(side=tk.BOTTOM, pady=10)
-buttons.append(close_btn) # Add to the list so its state can be controlled
+buttons.append(close_btn)
 
 # RIGHT PANEL (Information Display and Log)
 right_frame = tk.Frame(root, bg="#1e1e1e")
@@ -411,18 +572,16 @@ right_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=10)
 info_frame = tk.Frame(right_frame, bg="#1e1e1e")
 info_frame.pack(anchor='nw', pady=(0, 10), fill='x')
 
-section_font = ("Segoe UI", 12)
-# Detected IP Display
-tk.Label(info_frame, text="Detected IP:", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w')
-tk.Label(info_frame, textvariable=ip_var, bg="#1e1e1e", fg="lightblue", font=("Segoe UI", 12, "bold")).pack(anchor='w', pady=(0, 5))
+section_font = ("Segoe UI", 11) # Reduced font
+tk.Label(info_frame, text="Local IP:", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w')
+tk.Label(info_frame, textvariable=local_ip_var, bg="#1e1e1e", fg="lightblue", font=("Segoe UI", 11, "bold")).pack(anchor='w', pady=(0, 3)) # Reduced font, pady
 
-# Open Ports Display (now a Treeview)
-tk.Label(info_frame, text="Open Ports (Service & Version):", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w', pady=(0, 5))
+# Open Ports Display (Treeview with new Process column)
+tk.Label(info_frame, text="Open Ports (Service & Version):", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w', pady=(0, 3)) # Reduced pady
 
-# Treeview for displaying open ports in a tabular format
 # Define columns
-columns = ('#', 'Port', 'Protocol', 'Service', 'Version')
-tree = ttk.Treeview(info_frame, columns=columns, show='headings', height=7) # Adjust height as needed
+columns = ('#', 'Port', 'Protocol', 'Service', 'Version', 'Process')
+tree = ttk.Treeview(info_frame, columns=columns, show='headings', height=7) # Height remains 7 for readability
 
 # Configure column headings
 tree.heading('#', text='No.', anchor=tk.CENTER)
@@ -430,50 +589,60 @@ tree.heading('Port', text='Port', anchor=tk.W)
 tree.heading('Protocol', text='Protocol', anchor=tk.W)
 tree.heading('Service', text='Service', anchor=tk.W)
 tree.heading('Version', text='Version', anchor=tk.W)
+tree.heading('Process', text='Process', anchor=tk.W)
 
-# Configure column widths (approximate, Treeview adjusts)
-tree.column('#', width=40, anchor=tk.CENTER, stretch=tk.NO)
-tree.column('Port', width=60, anchor=tk.W, stretch=tk.NO)
-tree.column('Protocol', width=70, anchor=tk.W, stretch=tk.NO)
-tree.column('Service', width=120, anchor=tk.W)
-tree.column('Version', width=180, anchor=tk.W)
+# Configure column widths (slightly adjusted for compactness if needed)
+tree.column('#', width=35, anchor=tk.CENTER, stretch=tk.NO)
+tree.column('Port', width=55, anchor=tk.W, stretch=tk.NO)
+tree.column('Protocol', width=65, anchor=tk.W, stretch=tk.NO)
+tree.column('Service', width=110, anchor=tk.W)
+tree.column('Version', width=110, anchor=tk.W)
+tree.column('Process', width=140, anchor=tk.W)
 
 # Style for the Treeview to match the dark theme
 style = ttk.Style()
-style.theme_use("default") # Use a default theme to customize from
+style.theme_use("default")
 style.configure("Treeview",
-                background="#2d2d2d", # Background of the content area
-                foreground="white",   # Text color
-                fieldbackground="#2d2d2d", # Background of the cell
-                bordercolor="#3c3c3c", # Border color of cells
-                lightcolor="#3c3c3c", # Lighter part of borders
-                darkcolor="#1e1e1e",  # Darker part of borders
-                rowheight=25) # Height of each row
+                background="#2d2d2d",
+                foreground="white",
+                font=("Segoe UI", 9), # Reduced font for treeview content
+                fieldbackground="#2d2d2d",
+                bordercolor="#3c3c3c",
+                lightcolor="#3c3c3c",
+                darkcolor="#1e1e1e",
+                rowheight=22) # Reduced row height
 
 style.map('Treeview',
-          background=[('selected', '#007ACC')], # Selected row background (blue)
-          foreground=[('selected', 'white')]) # Selected row text color
+          background=[('selected', '#007ACC')],
+          foreground=[('selected', 'white')])
 
 style.configure("Treeview.Heading",
-                font=("Segoe UI", 10, "bold"),
-                background="#3c3c3c", # Header background
-                foreground="white",   # Header text color
+                font=("Segoe UI", 9, "bold"), # Reduced font for headings
+                background="#3c3c3c",
+                foreground="white",
                 relief="flat",
-                bordercolor="#3c3c3c") # Header border color
+                bordercolor="#3c3c3c")
 
 style.map("Treeview.Heading",
-          background=[('active', '#555')]) # Header background on hover
+          background=[('active', '#555')])
 
-tree.pack(fill='x', pady=(0, 5)) # Pack the Treeview
+tree.pack(fill='x', pady=(0, 5))
 
-# Whitelisted Ports Display
-tk.Label(info_frame, text="Whitelisted Ports:", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w', pady=(0, 5))
-tk.Label(info_frame, textvariable=whitelist_var, bg="#1e1e1e", fg="lightgreen", font=("Consolas", 12)).pack(anchor='w', pady=(0, 5))
+tk.Label(info_frame, text="Whitelisted Ports:", bg="#1e1e1e", fg="white", font=section_font).pack(anchor='w', pady=(0, 0))
+tk.Label(info_frame, textvariable=whitelist_var, bg="#1e1e1e", fg="lightgreen", font=("Consolas", 11)).pack(anchor='w', pady=(0, 5)) # Reduced font
 
-# Log Output Section
-tk.Label(info_frame, text="Log Output", bg="#1e1e1e", fg="white", font=("Segoe UI", 12, "bold")).pack(anchor='w', pady=(10, 0))
-log_output = scrolledtext.ScrolledText(right_frame, width=80, height=20, font=("Courier New", 10), bg="#2d2d2d", fg="white", borderwidth=0, relief="flat", insertbackground="white")
-log_output.pack(fill='both', expand=True)
-log_output.configure(state='disabled') # Initially disabled for user input
+# Log Output Section with Clear Log Button
+log_controls_frame = tk.Frame(right_frame, bg="#1e1e1e")
+log_controls_frame.pack(anchor='w', pady=(5, 0), fill='x')
 
-root.mainloop() # Start the Tkinter event loop
+tk.Label(log_controls_frame, text="Log Output", bg="#1e1e1e", fg="white", font=("Segoe UI", 11, "bold")).pack(side=tk.LEFT) # Reduced font
+clear_log_btn = tk.Button(log_controls_frame, text="Clear Log", command=clear_log, font=("Segoe UI", 8), # Reduced font
+                          bg="#444", fg="white", relief="flat", activebackground="#666", activeforeground="white")
+clear_log_btn.pack(side=tk.RIGHT, padx=3) # Reduced padx
+
+log_output = scrolledtext.ScrolledText(right_frame, width=80, height=12, font=("Courier New", 9), bg="#2d2d2d", fg="white", borderwidth=0, relief="flat", insertbackground="white") # Reduced font
+log_output.pack(fill='both', expand=True, pady=(3,0)) # Reduced pady
+log_output.configure(state='disabled')
+
+
+root.mainloop()

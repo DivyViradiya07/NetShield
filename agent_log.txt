@@ -1,284 +1,237 @@
-[2025-06-23 14:38:41] [*] Verifying port status...
-[2025-06-23 14:38:41] [!] Port 135 is still OPEN.
-[2025-06-23 14:38:41] [!] Port 139 is still OPEN.
-[2025-06-23 14:38:41] [!] Port 445 is still OPEN.
-[2025-06-23 14:38:42] [OK] Port 1111 is CLOSED.
-[2025-06-23 14:38:43] [OK] Port 2222 is CLOSED.
-[2025-06-23 14:38:44] [OK] Port 3333 is CLOSED.
-[2025-06-23 14:38:45] [OK] Port 4444 is CLOSED.
-[2025-06-23 14:38:50] [+] IP Detected: 192.168.0.191
-[2025-06-23 14:38:52] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:39:21] [+] IP Detected: 192.168.0.191
-[2025-06-23 14:39:22] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:39:28] [+] Running UDP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:40:16] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 14:40:38] [+] Running UDP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:40:41] [+] Blocked TCP port 135
-[2025-06-23 14:40:44] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 14:40:45] [+] Blocked TCP port 139
-[2025-06-23 14:40:48] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 14:40:49] [+] Blocked TCP port 445
-[2025-06-23 14:40:52] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 14:41:15] [+] IP Detected: 192.168.0.191
-[2025-06-23 14:41:24] [+] IP Detected: 192.168.0.191
-[2025-06-23 14:41:26] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:41:28] [+] Running UDP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:43:53] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 14:45:03] [+] UDP Scan complete. Results saved to scan_result.txt
-[2025-06-23 14:48:29] [+] Blocked TCP port 135
-[2025-06-23 14:48:32] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 14:48:33] [+] Blocked TCP port 139
-[2025-06-23 14:48:36] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 14:48:37] [+] Blocked TCP port 445
-[2025-06-23 14:48:40] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 14:48:41] [+] Blocked TCP port 1111
-[2025-06-23 14:48:44] [✓] TCP Port 1111 successfully blocked.
-[2025-06-23 14:48:45] [+] Blocked TCP port 2222
-[2025-06-23 14:48:48] [✓] TCP Port 2222 successfully blocked.
-[2025-06-23 14:48:50] [+] Blocked TCP port 3333
-[2025-06-23 14:48:53] [✓] TCP Port 3333 successfully blocked.
-[2025-06-23 14:48:54] [+] Blocked TCP port 4444
-[2025-06-23 14:48:57] [✓] TCP Port 4444 successfully blocked.
-[2025-06-23 14:48:58] [+] Blocked TCP port 5555
-[2025-06-23 14:49:01] [✓] TCP Port 5555 successfully blocked.
-[2025-06-23 14:49:02] [+] Blocked TCP port 6666
-[2025-06-23 14:49:05] [✓] TCP Port 6666 successfully blocked.
-[2025-06-23 14:49:06] [+] Blocked TCP port 7777
-[2025-06-23 14:49:09] [✓] TCP Port 7777 successfully blocked.
-[2025-06-23 14:49:10] [+] Blocked TCP port 8080
-[2025-06-23 14:49:13] [✓] TCP Port 8080 successfully blocked.
-[2025-06-23 14:49:14] [+] Blocked TCP port 8888
-[2025-06-23 14:49:17] [✓] TCP Port 8888 successfully blocked.
-[2025-06-23 14:49:18] [+] Blocked TCP port 9999
-[2025-06-23 14:49:21] [✓] TCP Port 9999 successfully blocked.
-[2025-06-23 14:49:29] [*] Verifying port status...
-[2025-06-23 14:49:29] [!] Port 135 is still OPEN.
-[2025-06-23 14:49:29] [!] Port 139 is still OPEN.
-[2025-06-23 14:49:29] [!] Port 445 is still OPEN.
-[2025-06-23 14:49:30] [OK] Port 1111 is CLOSED.
-[2025-06-23 14:49:31] [OK] Port 2222 is CLOSED.
-[2025-06-23 14:49:32] [OK] Port 3333 is CLOSED.
-[2025-06-23 14:49:33] [OK] Port 4444 is CLOSED.
-[2025-06-23 14:49:34] [OK] Port 5555 is CLOSED.
-[2025-06-23 14:49:35] [OK] Port 6666 is CLOSED.
-[2025-06-23 14:49:36] [OK] Port 7777 is CLOSED.
-[2025-06-23 14:49:37] [OK] Port 8080 is CLOSED.
-[2025-06-23 14:49:38] [OK] Port 8888 is CLOSED.
-[2025-06-23 14:49:39] [OK] Port 9999 is CLOSED.
-[2025-06-23 14:57:57] [+] IP Detected: 192.168.0.191
-[2025-06-23 14:57:59] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 14:58:19] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 14:58:26] [*] Verifying port status...
-[2025-06-23 14:58:26] [!] Port 135 is still OPEN.
-[2025-06-23 14:58:26] [!] Port 139 is still OPEN.
-[2025-06-23 14:58:26] [!] Port 445 is still OPEN.
-[2025-06-23 15:01:03] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:01:09] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:01:12] [*] No ports to whitelist.
-[2025-06-23 15:01:17] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:06:17] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:06:18] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:06:37] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:06:42] [+] Blocked TCP port 135
-[2025-06-23 15:06:45] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 15:06:46] [+] Blocked TCP port 139
-[2025-06-23 15:06:49] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 15:06:50] [+] Blocked TCP port 445
-[2025-06-23 15:06:53] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 15:07:08] [+] Blocked TCP port 135
-[2025-06-23 15:07:11] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 15:07:12] [+] Blocked TCP port 139
-[2025-06-23 15:07:15] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 15:07:16] [+] Blocked TCP port 445
-[2025-06-23 15:07:19] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 15:07:25] [*] Verifying port status...
-[2025-06-23 15:07:25] [!] Port 135 is still OPEN.
-[2025-06-23 15:07:25] [!] Port 139 is still OPEN.
-[2025-06-23 15:07:25] [!] Port 445 is still OPEN.
-[2025-06-23 15:07:27] [+] Whitelisted TCP port 135
-[2025-06-23 15:07:27] [+] Whitelisted TCP port 139
-[2025-06-23 15:07:27] [+] Whitelisted TCP port 445
-[2025-06-23 15:13:02] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:13:03] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:13:22] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:13:56] [~] Whitelisted ports updated: ['135']
-[2025-06-23 15:13:59] [~] Skipping whitelisted port 135
-[2025-06-23 15:14:01] [+] Blocked TCP port 139
-[2025-06-23 15:14:04] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 15:14:05] [+] Blocked TCP port 445
-[2025-06-23 15:14:08] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 15:14:15] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:14:24] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:15:51] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:15:52] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:16:26] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:16:41] [~] Whitelisted ports updated: ['1111', '4444']
-[2025-06-23 15:16:49] [+] Blocked TCP port 135
-[2025-06-23 15:16:51] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 15:16:52] [+] Blocked TCP port 139
-[2025-06-23 15:16:55] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 15:16:56] [+] Blocked TCP port 445
-[2025-06-23 15:16:59] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 15:16:59] [~] Skipping whitelisted port 1111
-[2025-06-23 15:16:59] [~] Skipping whitelisted port 4444
-[2025-06-23 15:17:01] [+] Blocked TCP port 5555
-[2025-06-23 15:17:04] [✓] TCP Port 5555 successfully blocked.
-[2025-06-23 15:17:08] [*] Verifying port status...
-[2025-06-23 15:17:08] [!] Port 135 is still OPEN.
-[2025-06-23 15:17:08] [!] Port 139 is still OPEN.
-[2025-06-23 15:17:08] [!] Port 445 is still OPEN.
-[2025-06-23 15:17:09] [OK] Port 5555 is CLOSED.
-[2025-06-23 15:20:28] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:20:30] [+] Running TCP Nmap scan on 192.168.0.191 ...
-[2025-06-23 15:20:50] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:21:32] [+] Blocked TCP port 135
-[2025-06-23 15:21:36] [✓] TCP Port 135 successfully blocked.
-[2025-06-23 15:21:37] [+] Blocked TCP port 139
-[2025-06-23 15:21:40] [✓] TCP Port 139 successfully blocked.
-[2025-06-23 15:21:42] [+] Blocked TCP port 445
-[2025-06-23 15:21:45] [✓] TCP Port 445 successfully blocked.
-[2025-06-23 15:22:19] [*] Verifying port status...
-[2025-06-23 15:22:19] [!] Port 135 is still OPEN.
-[2025-06-23 15:22:19] [!] Port 139 is still OPEN.
-[2025-06-23 15:22:19] [!] Port 445 is still OPEN.
-[2025-06-23 15:38:24] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:38:25] [+] Running TCP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 15:38:52] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:43:52] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:44:32] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:44:33] [+] Running TCP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 15:45:59] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:46:00] [!] Docker daemon not running or not accessible: error during connect: Get "http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.49/info": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
-[2025-06-23 15:46:38] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:46:40] [+] Running TCP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 15:47:05] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:47:52] [~] Whitelisted ports updated: 9999, 8080, 2869
-[2025-06-23 15:47:56] [*] Attempting to block 12 TCP ports...
-[2025-06-23 15:48:00] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
-[2025-06-23 15:48:03] [✓] TCP Port 135 successfully blocked and verified.
-[2025-06-23 15:48:04] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
-[2025-06-23 15:48:07] [✓] TCP Port 139 successfully blocked and verified.
-[2025-06-23 15:48:08] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
-[2025-06-23 15:48:10] [✓] TCP Port 445 successfully blocked and verified.
-[2025-06-23 15:48:12] [+] Firewall rule 'Block_NetShield_TCP_Port_1111' created to block TCP port 1111.
-[2025-06-23 15:48:15] [✓] TCP Port 1111 successfully blocked and verified.
-[2025-06-23 15:48:16] [+] Firewall rule 'Block_NetShield_TCP_Port_2222' created to block TCP port 2222.
-[2025-06-23 15:48:20] [✓] TCP Port 2222 successfully blocked and verified.
-[2025-06-23 15:48:20] [~] Skipping whitelisted TCP port 2869.
-[2025-06-23 15:48:21] [+] Firewall rule 'Block_NetShield_TCP_Port_4444' created to block TCP port 4444.
-[2025-06-23 15:48:24] [✓] TCP Port 4444 successfully blocked and verified.
-[2025-06-23 15:48:25] [+] Firewall rule 'Block_NetShield_TCP_Port_6666' created to block TCP port 6666.
-[2025-06-23 15:48:28] [✓] TCP Port 6666 successfully blocked and verified.
-[2025-06-23 15:48:29] [+] Firewall rule 'Block_NetShield_TCP_Port_7777' created to block TCP port 7777.
-[2025-06-23 15:48:32] [✓] TCP Port 7777 successfully blocked and verified.
-[2025-06-23 15:48:32] [~] Skipping whitelisted TCP port 8080.
-[2025-06-23 15:48:33] [+] Firewall rule 'Block_NetShield_TCP_Port_8888' created to block TCP port 8888.
-[2025-06-23 15:48:36] [✓] TCP Port 8888 successfully blocked and verified.
-[2025-06-23 15:48:36] [~] Skipping whitelisted TCP port 9999.
-[2025-06-23 15:48:45] [*] Verifying TCP port status on 192.168.0.191...
-[2025-06-23 15:48:45] [!] TCP Port 135 (Service: msrpc) is still OPEN.
-[2025-06-23 15:48:45] [!] TCP Port 139 (Service: netbios-ssn) is still OPEN.
-[2025-06-23 15:48:45] [!] TCP Port 445 (Service: microsoft-ds?) is still OPEN.
-[2025-06-23 15:48:46] [OK] TCP Port 1111 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:47] [OK] TCP Port 2222 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:47] [~] Skipping verification for whitelisted TCP port 2869.
-[2025-06-23 15:48:48] [OK] TCP Port 4444 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:49] [OK] TCP Port 6666 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:50] [OK] TCP Port 7777 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:50] [~] Skipping verification for whitelisted TCP port 8080.
-[2025-06-23 15:48:51] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:48:51] [~] Skipping verification for whitelisted TCP port 9999.
-[2025-06-23 15:49:02] [+] Running TCP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 15:49:28] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 15:49:40] [*] Attempting to block 6 TCP ports...
-[2025-06-23 15:49:41] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
-[2025-06-23 15:49:44] [✓] TCP Port 135 successfully blocked and verified.
-[2025-06-23 15:49:45] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
-[2025-06-23 15:49:48] [✓] TCP Port 139 successfully blocked and verified.
-[2025-06-23 15:49:49] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
-[2025-06-23 15:49:52] [✓] TCP Port 445 successfully blocked and verified.
-[2025-06-23 15:49:52] [~] Skipping whitelisted TCP port 2869.
-[2025-06-23 15:49:53] [+] Firewall rule 'Block_NetShield_TCP_Port_3333' created to block TCP port 3333.
-[2025-06-23 15:49:56] [✓] TCP Port 3333 successfully blocked and verified.
-[2025-06-23 15:49:58] [+] Firewall rule 'Block_NetShield_TCP_Port_5555' created to block TCP port 5555.
-[2025-06-23 15:50:00] [✓] TCP Port 5555 successfully blocked and verified.
-[2025-06-23 15:50:32] [*] Verifying TCP port status on 192.168.0.191...
-[2025-06-23 15:50:32] [!] TCP Port 135 (Service: msrpc) is still OPEN.
-[2025-06-23 15:50:32] [!] TCP Port 139 (Service: netbios-ssn) is still OPEN.
-[2025-06-23 15:50:32] [!] TCP Port 445 (Service: microsoft-ds?) is still OPEN.
-[2025-06-23 15:50:32] [~] Skipping verification for whitelisted TCP port 2869.
-[2025-06-23 15:50:33] [OK] TCP Port 3333 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:50:34] [OK] TCP Port 5555 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 15:53:30] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:53:32] [+] Running UDP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 15:59:16] [+] IP Detected: 192.168.0.191
-[2025-06-23 15:59:17] [+] Running Combined TCP & UDP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 16:11:06] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:11:08] [+] Running Combined TCP & UDP Nmap scan with service detection on 192.168.0.191 ...
-[2025-06-23 16:16:04] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:16:07] [*] Performing a Quick Scan (Top 1000 TCP & UDP ports)...
-[2025-06-23 16:16:07] [+] Running Combined TCP & UDP Nmap scan on 192.168.0.191 (Ports: 1-1000)...
-[2025-06-23 16:30:03] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:30:05] [*] Performing a Quick Scan (Top 1000 TCP & UDP ports)...
-[2025-06-23 16:30:05] [+] Running Combined TCP & UDP Nmap scan on 192.168.0.191 (Ports: 1-1000)...
-[2025-06-23 16:31:24] [!] Please detect IP address first.
-[2025-06-23 16:34:11] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:34:14] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
-[2025-06-23 16:34:41] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 16:34:47] [+] Running UDP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
-[2025-06-23 16:36:36] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:36:38] [+] Running TCP Nmap full scan (All Ports) on 192.168.0.191 ...
-[2025-06-23 16:41:06] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:41:11] [+] Running TCP Nmap full scan (All Ports) on 192.168.0.191 ...
-[2025-06-23 16:41:11] [!] TCP Scan failed: Error #486: Your port specifications are illegal.  Example of proper form: "-100,200-1024,T:3000-4000,U:60000-"
-QUITTING!
-[2025-06-23 16:41:57] [+] Running TCP Nmap full scan (All Ports) on 192.168.0.191 ...
-[2025-06-23 16:41:58] [!] TCP Scan failed: Error #486: Your port specifications are illegal.  Example of proper form: "-100,200-1024,T:3000-4000,U:60000-"
-QUITTING!
-[2025-06-23 16:42:11] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:42:13] [+] Running TCP Nmap full scan (All Ports) on 192.168.0.191 ...
-[2025-06-23 16:46:32] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:46:34] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
-[2025-06-23 16:48:54] [+] TCP Scan complete. Results saved to scan_result.txt
-[2025-06-23 16:49:15] [~] Whitelisted ports updated: 1111, 2222, 8080
-[2025-06-23 16:49:17] [*] Attempting to block 13 detected ports...
-[2025-06-23 16:49:20] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
-[2025-06-23 16:49:22] [✓] TCP Port 135 successfully blocked and verified.
-[2025-06-23 16:49:24] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
-[2025-06-23 16:49:26] [✓] TCP Port 139 successfully blocked and verified.
-[2025-06-23 16:49:27] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
-[2025-06-23 16:49:29] [✓] TCP Port 445 successfully blocked and verified.
-[2025-06-23 16:49:29] [~] Skipping whitelisted TCP port 1111.
-[2025-06-23 16:49:29] [~] Skipping whitelisted TCP port 2222.
-[2025-06-23 16:49:31] [+] Firewall rule 'Block_NetShield_TCP_Port_3333' created to block TCP port 3333.
-[2025-06-23 16:49:33] [✓] TCP Port 3333 successfully blocked and verified.
-[2025-06-23 16:49:34] [+] Firewall rule 'Block_NetShield_TCP_Port_4444' created to block TCP port 4444.
-[2025-06-23 16:49:36] [✓] TCP Port 4444 successfully blocked and verified.
-[2025-06-23 16:49:37] [+] Firewall rule 'Block_NetShield_TCP_Port_5555' created to block TCP port 5555.
-[2025-06-23 16:49:40] [✓] TCP Port 5555 successfully blocked and verified.
-[2025-06-23 16:49:42] [+] Firewall rule 'Block_NetShield_TCP_Port_6666' created to block TCP port 6666.
-[2025-06-23 16:49:44] [✓] TCP Port 6666 successfully blocked and verified.
-[2025-06-23 16:49:45] [+] Firewall rule 'Block_NetShield_TCP_Port_7777' created to block TCP port 7777.
-[2025-06-23 16:49:48] [✓] TCP Port 7777 successfully blocked and verified.
-[2025-06-23 16:49:48] [~] Skipping whitelisted TCP port 8080.
-[2025-06-23 16:49:49] [+] Firewall rule 'Block_NetShield_TCP_Port_8888' created to block TCP port 8888.
-[2025-06-23 16:49:51] [✓] TCP Port 8888 successfully blocked and verified.
-[2025-06-23 16:49:53] [+] Firewall rule 'Block_NetShield_TCP_Port_9999' created to block TCP port 9999.
-[2025-06-23 16:49:55] [✓] TCP Port 9999 successfully blocked and verified.
-[2025-06-23 16:49:59] [*] Verifying all detected port status on 192.168.0.191...
-[2025-06-23 16:49:59] [!] TCP Port 135 (Service: msrpc) is still OPEN.
-[2025-06-23 16:49:59] [!] TCP Port 139 (Service: netbios-ssn) is still OPEN.
-[2025-06-23 16:49:59] [!] TCP Port 445 (Service: microsoft-ds?) is still OPEN.
-[2025-06-23 16:49:59] [~] Skipping verification for whitelisted TCP port 1111.
-[2025-06-23 16:49:59] [~] Skipping verification for whitelisted TCP port 2222.
-[2025-06-23 16:50:00] [OK] TCP Port 3333 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:01] [OK] TCP Port 4444 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:02] [OK] TCP Port 5555 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:03] [OK] TCP Port 6666 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:04] [OK] TCP Port 7777 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:04] [~] Skipping verification for whitelisted TCP port 8080.
-[2025-06-23 16:50:05] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:50:06] [OK] TCP Port 9999 (Service: tcpwrapped) is CLOSED.
-[2025-06-23 16:52:18] [+] IP Detected: 192.168.0.191
-[2025-06-23 16:52:22] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
-[2025-06-23 16:55:55] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:03:44] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.1.1-254 ...
+[2025-06-24 15:16:41] [+] Running TCP Nmap scan (Top 1000 Ports) on 45.33.32.156 ...
+[2025-06-24 15:19:10] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:19:17] [*] Attempting to block 4 detected ports...
+[2025-06-24 15:19:18] [+] Firewall rule 'Block_NetShield_TCP_Port_22' created to block TCP port 22.
+[2025-06-24 15:19:21] [✓] TCP Port 22 successfully blocked and verified.
+[2025-06-24 15:19:22] [+] Firewall rule 'Block_NetShield_TCP_Port_80' created to block TCP port 80.
+[2025-06-24 15:19:25] [✓] TCP Port 80 successfully blocked and verified.
+[2025-06-24 15:19:26] [+] Firewall rule 'Block_NetShield_TCP_Port_9929' created to block TCP port 9929.
+[2025-06-24 15:19:29] [✓] TCP Port 9929 successfully blocked and verified.
+[2025-06-24 15:19:30] [+] Firewall rule 'Block_NetShield_TCP_Port_31337' created to block TCP port 31337.
+[2025-06-24 15:19:33] [✓] TCP Port 31337 successfully blocked and verified.
+[2025-06-24 15:19:34] [*] Verifying all detected port status on 45.33.32.156...
+[2025-06-24 15:19:35] [!] TCP Port 22 (Service: ssh) is still OPEN.
+[2025-06-24 15:19:35] [!] TCP Port 80 (Service: http) is still OPEN.
+[2025-06-24 15:19:35] [!] TCP Port 9929 (Service: nping-echo) is still OPEN.
+[2025-06-24 15:19:36] [!] TCP Port 31337 (Service: tcpwrapped) is still OPEN.
+[2025-06-24 15:19:53] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 15:19:54] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 15:19:55] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 15:22:25] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:22:43] [*] Attempting to block 13 detected ports...
+[2025-06-24 15:22:44] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
+[2025-06-24 15:22:47] [✓] TCP Port 135 successfully blocked and verified.
+[2025-06-24 15:22:48] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
+[2025-06-24 15:22:50] [✓] TCP Port 139 successfully blocked and verified.
+[2025-06-24 15:22:51] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
+[2025-06-24 15:22:54] [✓] TCP Port 445 successfully blocked and verified.
+[2025-06-24 15:22:55] [+] Firewall rule 'Block_NetShield_TCP_Port_1111' created to block TCP port 1111.
+[2025-06-24 15:22:58] [✓] TCP Port 1111 successfully blocked and verified.
+[2025-06-24 15:22:59] [+] Firewall rule 'Block_NetShield_TCP_Port_2222' created to block TCP port 2222.
+[2025-06-24 15:23:01] [✓] TCP Port 2222 successfully blocked and verified.
+[2025-06-24 15:23:03] [+] Firewall rule 'Block_NetShield_TCP_Port_3333' created to block TCP port 3333.
+[2025-06-24 15:23:05] [✓] TCP Port 3333 successfully blocked and verified.
+[2025-06-24 15:23:06] [+] Firewall rule 'Block_NetShield_TCP_Port_4444' created to block TCP port 4444.
+[2025-06-24 15:23:08] [✓] TCP Port 4444 successfully blocked and verified.
+[2025-06-24 15:23:10] [+] Firewall rule 'Block_NetShield_TCP_Port_5555' created to block TCP port 5555.
+[2025-06-24 15:23:12] [✓] TCP Port 5555 successfully blocked and verified.
+[2025-06-24 15:23:13] [+] Firewall rule 'Block_NetShield_TCP_Port_6666' created to block TCP port 6666.
+[2025-06-24 15:23:16] [✓] TCP Port 6666 successfully blocked and verified.
+[2025-06-24 15:23:17] [+] Firewall rule 'Block_NetShield_TCP_Port_7777' created to block TCP port 7777.
+[2025-06-24 15:23:20] [✓] TCP Port 7777 successfully blocked and verified.
+[2025-06-24 15:23:21] [+] Firewall rule 'Block_NetShield_TCP_Port_8080' created to block TCP port 8080.
+[2025-06-24 15:23:23] [✓] TCP Port 8080 successfully blocked and verified.
+[2025-06-24 15:23:24] [+] Firewall rule 'Block_NetShield_TCP_Port_8888' created to block TCP port 8888.
+[2025-06-24 15:23:27] [✓] TCP Port 8888 successfully blocked and verified.
+[2025-06-24 15:23:28] [+] Firewall rule 'Block_NetShield_TCP_Port_9999' created to block TCP port 9999.
+[2025-06-24 15:23:30] [✓] TCP Port 9999 successfully blocked and verified.
+[2025-06-24 15:24:17] [*] Verifying all detected port status on 4444, 1111, 8080...
+[2025-06-24 15:24:17] [!] Error verifying TCP port 135: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 139: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 445: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 1111: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 2222: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 3333: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 4444: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 5555: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 6666: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 7777: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 8080: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 8888: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:17] [!] Error verifying TCP port 9999: [Errno 11001] getaddrinfo failed
+[2025-06-24 15:24:37] [*] Verifying all detected port status on 192.168.0.191...
+[2025-06-24 15:24:37] [!] TCP Port 135 (Service: msrpc) is still OPEN.
+[2025-06-24 15:24:37] [!] TCP Port 139 (Service: netbios-ssn) is still OPEN.
+[2025-06-24 15:24:37] [!] TCP Port 445 (Service: microsoft-ds?) is still OPEN.
+[2025-06-24 15:24:38] [OK] TCP Port 1111 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:39] [OK] TCP Port 2222 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:40] [OK] TCP Port 3333 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:41] [OK] TCP Port 4444 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:42] [OK] TCP Port 5555 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:43] [OK] TCP Port 6666 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:44] [OK] TCP Port 7777 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:45] [OK] TCP Port 8080 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:46] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:24:47] [OK] TCP Port 9999 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 15:36:09] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 15:36:11] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 15:36:12] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 15:36:37] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:37:23] [!] No target IP/range entered and local IP not detected. Please detect IP or enter a target.
+[2025-06-24 15:37:26] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 15:37:27] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 15:37:27] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 15:40:07] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:40:37] [~] Whitelisted ports updated: 1111, 2222, 3333
+[2025-06-24 15:43:50] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 15:43:53] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 15:43:54] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 15:43:54] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 15:43:54] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 15:44:20] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 15:56:19] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 15:56:21] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 15:56:21] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 15:56:22] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 15:56:22] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 15:56:49] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:00:47] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:00:48] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:00:48] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:00:48] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:00:48] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:01:13] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:01:45] [*] Attempting to block 3 detected ports...
+[2025-06-24 16:01:47] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
+[2025-06-24 16:01:51] [✓] TCP Port 135 successfully blocked and verified.
+[2025-06-24 16:01:52] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
+[2025-06-24 16:01:55] [✓] TCP Port 139 successfully blocked and verified.
+[2025-06-24 16:01:56] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
+[2025-06-24 16:02:00] [✓] TCP Port 445 successfully blocked and verified.
+[2025-06-24 16:02:42] [!] No target IP/range entered and local IP not detected. Please detect IP or enter a target.
+[2025-06-24 16:03:13] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:03:15] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:03:16] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:03:16] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:03:16] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:03:41] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:05:28] [!] No target IP/range entered and local IP not detected. Please detect IP or enter a target.
+[2025-06-24 16:05:31] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:05:32] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:05:33] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:05:33] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:05:33] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:07:18] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:07:50] [*] Attempting to block 13 detected ports...
+[2025-06-24 16:07:52] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
+[2025-06-24 16:07:56] [✓] TCP Port 135 successfully blocked and verified.
+[2025-06-24 16:07:58] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
+[2025-06-24 16:08:02] [✓] TCP Port 139 successfully blocked and verified.
+[2025-06-24 16:08:03] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
+[2025-06-24 16:08:08] [✓] TCP Port 445 successfully blocked and verified.
+[2025-06-24 16:08:09] [+] Firewall rule 'Block_NetShield_TCP_Port_1111' created to block TCP port 1111.
+[2025-06-24 16:08:14] [✓] TCP Port 1111 successfully blocked and verified.
+[2025-06-24 16:08:16] [+] Firewall rule 'Block_NetShield_TCP_Port_2222' created to block TCP port 2222.
+[2025-06-24 16:08:20] [✓] TCP Port 2222 successfully blocked and verified.
+[2025-06-24 16:08:21] [+] Firewall rule 'Block_NetShield_TCP_Port_3333' created to block TCP port 3333.
+[2025-06-24 16:08:24] [✓] TCP Port 3333 successfully blocked and verified.
+[2025-06-24 16:08:26] [+] Firewall rule 'Block_NetShield_TCP_Port_4444' created to block TCP port 4444.
+[2025-06-24 16:08:30] [✓] TCP Port 4444 successfully blocked and verified.
+[2025-06-24 16:08:32] [+] Firewall rule 'Block_NetShield_TCP_Port_5555' created to block TCP port 5555.
+[2025-06-24 16:08:37] [✓] TCP Port 5555 successfully blocked and verified.
+[2025-06-24 16:08:38] [+] Firewall rule 'Block_NetShield_TCP_Port_6666' created to block TCP port 6666.
+[2025-06-24 16:08:42] [✓] TCP Port 6666 successfully blocked and verified.
+[2025-06-24 16:08:43] [+] Firewall rule 'Block_NetShield_TCP_Port_7777' created to block TCP port 7777.
+[2025-06-24 16:08:47] [✓] TCP Port 7777 successfully blocked and verified.
+[2025-06-24 16:08:49] [+] Firewall rule 'Block_NetShield_TCP_Port_8080' created to block TCP port 8080.
+[2025-06-24 16:08:52] [✓] TCP Port 8080 successfully blocked and verified.
+[2025-06-24 16:08:53] [+] Firewall rule 'Block_NetShield_TCP_Port_8888' created to block TCP port 8888.
+[2025-06-24 16:08:57] [✓] TCP Port 8888 successfully blocked and verified.
+[2025-06-24 16:08:58] [+] Firewall rule 'Block_NetShield_TCP_Port_9999' created to block TCP port 9999.
+[2025-06-24 16:09:01] [✓] TCP Port 9999 successfully blocked and verified.
+[2025-06-24 16:12:32] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:12:33] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:12:33] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:12:33] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:12:33] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:15:55] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:15:57] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:15:57] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:15:57] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:15:57] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:16:17] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:16:23] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:18:33] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:18:34] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:18:34] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:18:34] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:18:34] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:19:00] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:19:40] [*] Log cleared by user.
+[2025-06-24 16:19:43] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:19:49] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:19:49] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:19:49] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:19:49] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:21:49] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:23:59] [~] Whitelisted ports updated: 4444, 8080
+[2025-06-24 16:24:46] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:24:47] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:24:47] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:24:48] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:24:48] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:25:12] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:31:37] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:31:39] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:31:39] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:31:39] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:31:39] [+] Running UDP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:36:43] [+] Local IP Detected: 192.168.0.191
+[2025-06-24 16:36:44] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.191
+[2025-06-24 16:36:44] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-24 16:36:44] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-24 16:36:44] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.191 ...
+[2025-06-24 16:39:42] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-24 16:41:40] [*] Attempting to block 13 detected ports...
+[2025-06-24 16:41:41] [+] Firewall rule 'Block_NetShield_TCP_Port_135' created to block TCP port 135.
+[2025-06-24 16:41:45] [✓] TCP Port 135 successfully blocked and verified.
+[2025-06-24 16:41:46] [+] Firewall rule 'Block_NetShield_TCP_Port_139' created to block TCP port 139.
+[2025-06-24 16:41:48] [✓] TCP Port 139 successfully blocked and verified.
+[2025-06-24 16:41:50] [+] Firewall rule 'Block_NetShield_TCP_Port_445' created to block TCP port 445.
+[2025-06-24 16:41:54] [✓] TCP Port 445 successfully blocked and verified.
+[2025-06-24 16:41:57] [+] Firewall rule 'Block_NetShield_TCP_Port_1111' created to block TCP port 1111.
+[2025-06-24 16:42:01] [✓] TCP Port 1111 successfully blocked and verified.
+[2025-06-24 16:42:03] [+] Firewall rule 'Block_NetShield_TCP_Port_2222' created to block TCP port 2222.
+[2025-06-24 16:42:06] [✓] TCP Port 2222 successfully blocked and verified.
+[2025-06-24 16:42:08] [+] Firewall rule 'Block_NetShield_TCP_Port_3333' created to block TCP port 3333.
+[2025-06-24 16:42:11] [✓] TCP Port 3333 successfully blocked and verified.
+[2025-06-24 16:42:12] [+] Firewall rule 'Block_NetShield_TCP_Port_4444' created to block TCP port 4444.
+[2025-06-24 16:42:15] [✓] TCP Port 4444 successfully blocked and verified.
+[2025-06-24 16:42:16] [+] Firewall rule 'Block_NetShield_TCP_Port_5555' created to block TCP port 5555.
+[2025-06-24 16:42:19] [✓] TCP Port 5555 successfully blocked and verified.
+[2025-06-24 16:42:21] [+] Firewall rule 'Block_NetShield_TCP_Port_6666' created to block TCP port 6666.
+[2025-06-24 16:42:24] [✓] TCP Port 6666 successfully blocked and verified.
+[2025-06-24 16:42:25] [+] Firewall rule 'Block_NetShield_TCP_Port_7777' created to block TCP port 7777.
+[2025-06-24 16:42:28] [✓] TCP Port 7777 successfully blocked and verified.
+[2025-06-24 16:42:29] [+] Firewall rule 'Block_NetShield_TCP_Port_8080' created to block TCP port 8080.
+[2025-06-24 16:42:32] [✓] TCP Port 8080 successfully blocked and verified.
+[2025-06-24 16:42:33] [+] Firewall rule 'Block_NetShield_TCP_Port_8888' created to block TCP port 8888.
+[2025-06-24 16:42:36] [✓] TCP Port 8888 successfully blocked and verified.
+[2025-06-24 16:42:38] [+] Firewall rule 'Block_NetShield_TCP_Port_9999' created to block TCP port 9999.
+[2025-06-24 16:42:40] [✓] TCP Port 9999 successfully blocked and verified.
+[2025-06-24 16:44:52] [*] Verifying all detected port status on 192.168.0.191...
+[2025-06-24 16:44:52] [!] TCP Port 135 (Service: msrpc) is still OPEN.
+[2025-06-24 16:44:52] [!] TCP Port 139 (Service: netbios-ssn) is still OPEN.
+[2025-06-24 16:44:52] [!] TCP Port 445 (Service: microsoft-ds?) is still OPEN.
+[2025-06-24 16:44:53] [OK] TCP Port 1111 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:54] [OK] TCP Port 2222 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:55] [OK] TCP Port 3333 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:56] [OK] TCP Port 4444 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:57] [OK] TCP Port 5555 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:58] [OK] TCP Port 6666 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:44:59] [OK] TCP Port 7777 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:45:00] [OK] TCP Port 8080 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:45:02] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:45:03] [OK] TCP Port 9999 (Service: tcpwrapped) is CLOSED.
+[2025-06-24 16:45:05] [*] Log cleared by user.
