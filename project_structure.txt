@@ -1,0 +1,79 @@
+|-- Services
+|   |-- __pycache__
+|   |   |-- network_scanner.cpython-313.pyc
+|   |   |-- ssl_scanner.cpython-313.pyc
+|   |   `-- zap_scanner.cpython-313.pyc
+|   |-- network_scanner.py
+|   |-- results
+|   |   |-- network_scanner
+|   |   |   |-- scan_result_aggressive.txt
+|   |   |   |-- scan_result_fragmented.txt
+|   |   |   |-- scan_result_os.txt
+|   |   |   |-- scan_result_tcp.txt
+|   |   |   |-- scan_result_tcp_syn.txt
+|   |   |   `-- whitelisted_ports.json
+|   |   |-- sql_scanner
+|   |   |   `-- sqlmap_output
+|   |   |-- ssl_scanner
+|   |   |   `-- ssl_report.xml
+|   |   `-- zap_scanner
+|   |       |-- zap.yaml
+|   |       |-- zap_baseline_report.html
+|   |       `-- zap_baseline_report.json
+|   |-- sql_map_scanner.py
+|   |-- ssl_scanner.py
+|   `-- zap_scanner.py
+|-- __init__.py
+|-- __pycache__
+|   |-- agent_logic.cpython-313.pyc
+|   `-- app.cpython-313.pyc
+|-- app.py
+|-- logs
+|   |-- chatbot_logs.txt
+|   |-- network_agent_log.txt
+|   |-- sql_agent_log.txt
+|   |-- ssl_agent_log.txt
+|   `-- zap_agent_log.txt
+|-- project_structure.txt
+|-- routes
+|   |-- __init__.py
+|   |-- __pycache__
+|   |   |-- __init__.cpython-313.pyc
+|   |   |-- chatbot_bp.cpython-313.pyc
+|   |   |-- network_scanner_bp.cpython-313.pyc
+|   |   |-- ssl_scanner_bp.cpython-313.pyc
+|   |   `-- zap_scanner_bp.cpython-313.pyc
+|   |-- chatbot_bp.py
+|   |-- network_scanner_bp.py
+|   |-- ssl_scanner_bp.py
+|   `-- zap_scanner_bp.py
+|-- static
+|   |-- css
+|   |   `-- style.css
+|   `-- js
+|       |-- chatbot.js
+|       |-- network_scanner.js
+|       |-- ssl_scanner.js
+|       `-- zap_scanner.js
+|-- temp
+|   |-- README.md
+|   |-- agent_linux.py
+|   |-- agent_log.txt
+|   |-- agent_windows.py
+|   |-- chatbot\ copy\ 2.html
+|   |-- chatbot\ copy.js
+|   |-- chatbot.html
+|   |-- chatbot.js
+|   |-- port_opener_linux.py
+|   |-- port_opener_windows.py
+|   |-- scan_result.txt
+|   `-- udp_result.txt
+|-- templates
+|   |-- chatbot.html
+|   |-- home.html
+|   |-- network_scanner.html
+|   |-- ssl_scanner.html
+|   `-- zap_scanner.html
+`-- uploads
+
+19 directories, 59 files

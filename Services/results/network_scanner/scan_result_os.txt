@@ -1,0 +1,4 @@
+# Nmap 7.95 scan initiated Wed Jul  9 09:36:20 2025 as: /usr/lib/nmap/nmap -O --osscan-limit -T4 -oG "/home/isec/Desktop/NetShield (2)/Services/results/network_scanner/scan_result_os.txt" 192.168.0.156
+Host: 192.168.0.156 ()	Status: Up
+Host: 192.168.0.156 ()	Ports: 80/open/tcp//http///, 5000/open/tcp//upnp///, 7070/open/tcp//realserver///	Ignored State: closed (997)	OS: Linux 2.6.32|Linux 5.0 - 6.2	Seq Index: 255	IP ID Seq: All zeros
+# Nmap done at Wed Jul  9 09:36:21 2025 -- 1 IP address (1 host up) scanned in 1.42 seconds

@@ -1,0 +1,47 @@
+[2025-07-11 12:19:40] [*] ZAP log file cleared.
+[2025-07-11 12:20:09] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:20:09] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:20:45] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:20:45] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:20:53] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:20:53] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:27:42] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:27:42] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:28:55] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:28:55] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:29:03] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:29:03] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:48] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:48] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:52] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:52] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:56] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:32:56] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:36:25] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 12:36:25] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 15:52:58] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 15:52:58] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:03:43] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:03:43] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:05:12] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:05:12] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:06:14] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:06:14] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:06:30] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:06:30] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:17:02] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-11 16:17:02] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:38:14] [!] Error checking admin privileges (Windows): function 'IsUserIsAdmin' not found
+[2025-07-12 14:38:14] [!] Privilege Note: Running Docker commands might require elevated privileges or being part of the 'docker' group.
+[2025-07-12 14:38:14] [!] Application might not function correctly due to insufficient Docker permissions.
+[2025-07-12 14:38:18] [!] Error checking admin privileges (Windows): function 'IsUserIsAdmin' not found
+[2025-07-12 14:38:18] [!] Privilege Note: Running Docker commands might require elevated privileges or being part of the 'docker' group.
+[2025-07-12 14:38:18] [!] Application might not function correctly due to insufficient Docker permissions.
+[2025-07-12 14:39:00] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:39:00] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:40:28] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:40:28] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:40:47] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:40:47] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:45:03] [+] ZAP report 'zap_baseline_report.json' parsed successfully.
+[2025-07-12 14:45:03] [+] ZAP report 'zap_baseline_report.json' parsed successfully.

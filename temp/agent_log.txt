@@ -235,3 +235,215 @@
 [2025-06-24 16:45:02] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
 [2025-06-24 16:45:03] [OK] TCP Port 9999 (Service: tcpwrapped) is CLOSED.
 [2025-06-24 16:45:05] [*] Log cleared by user.
+[2025-06-26 13:35:14] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:35:22] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:35:23] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:35:23] [*] Docker image uzyexe/nmap not found locally. Attempting to pull...
+[2025-06-26 13:35:34] [+] Successfully pulled Docker image: uzyexe/nmap
+[2025-06-26 13:35:34] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:35:53] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:35:53] [*] No open ports detected to display.
+[2025-06-26 13:37:45] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:37:45] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:37:45] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:37:45] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:38:52] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:38:52] [*] No open ports detected to display.
+[2025-06-26 13:39:48] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:39:49] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:39:49] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:39:49] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:39:49] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:40:16] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:40:16] [*] No open ports detected to display.
+[2025-06-26 13:42:46] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:42:48] [*] Log cleared by user.
+[2025-06-26 13:42:48] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:42:49] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:42:49] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:42:49] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:43:00] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:43:37] [!] No valid port numbers found in whitelist input.
+[2025-06-26 13:43:49] [~] Whitelisted ports updated: 80, 7070
+[2025-06-26 13:43:52] [*] Attempting to block 12 detected ports...
+[2025-06-26 13:43:52] [~] Skipping whitelisted TCP port 80.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 1111 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 1111 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 2222 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 2222 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 3333 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 3333 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 4444 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 4444 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 5555 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 5555 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 6666 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 6666 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [~] Skipping whitelisted TCP port 7070.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 7777 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 7777 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 8080 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 8080 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 8888 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 8888 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:52] [!] Failed to block TCP port 9999 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:52] [x] TCP Port 9999 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:57] [*] Attempting to block 12 detected ports...
+[2025-06-26 13:43:57] [~] Skipping whitelisted TCP port 80.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 1111 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 1111 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 2222 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 2222 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 3333 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 3333 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 4444 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 4444 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 5555 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 5555 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 6666 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 6666 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [~] Skipping whitelisted TCP port 7070.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 7777 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 7777 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 8080 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 8080 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 8888 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 8888 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:43:58] [!] Failed to block TCP port 9999 with UFW: ERROR: Need 'to' or 'from' clause
+[2025-06-26 13:43:58] [x] TCP Port 9999 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:44:02] [*] Verifying all detected port status on 192.168.0.156...
+[2025-06-26 13:44:02] [~] Skipping verification for whitelisted TCP port 80.
+[2025-06-26 13:44:02] [!] TCP Port 1111 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 2222 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 3333 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 4444 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 5555 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 6666 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [~] Skipping verification for whitelisted TCP port 7070.
+[2025-06-26 13:44:02] [!] TCP Port 7777 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 8080 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 8888 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:44:02] [!] TCP Port 9999 (Service: tcpwrapped) is still OPEN.
+[2025-06-26 13:46:05] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:46:06] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:46:06] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:46:06] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:46:06] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:46:17] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:47:05] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:47:06] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:47:06] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:47:06] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:47:06] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:47:18] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 1111: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 2222: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 3333: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 4444: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 5555: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 6666: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 7777: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 8080: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 8888: 
+[2025-06-26 13:47:18] [!] Error getting process info for TCP port 9999: 
+[2025-06-26 13:47:41] [~] Whitelisted ports updated: 80, 7070, 8080
+[2025-06-26 13:47:43] [*] Attempting to block 12 detected ports...
+[2025-06-26 13:47:43] [~] Skipping whitelisted TCP port 80.
+[2025-06-26 13:47:43] [+] UFW rule created to block TCP port 1111.
+[2025-06-26 13:47:43] [x] TCP Port 1111 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:44] [+] UFW rule created to block TCP port 2222.
+[2025-06-26 13:47:44] [x] TCP Port 2222 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:44] [+] UFW rule created to block TCP port 3333.
+[2025-06-26 13:47:44] [x] TCP Port 3333 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:44] [+] UFW rule created to block TCP port 4444.
+[2025-06-26 13:47:44] [x] TCP Port 4444 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:44] [+] UFW rule created to block TCP port 5555.
+[2025-06-26 13:47:44] [x] TCP Port 5555 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:45] [+] UFW rule created to block TCP port 6666.
+[2025-06-26 13:47:45] [x] TCP Port 6666 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:45] [~] Skipping whitelisted TCP port 7070.
+[2025-06-26 13:47:45] [+] UFW rule created to block TCP port 7777.
+[2025-06-26 13:47:45] [x] TCP Port 7777 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:45] [~] Skipping whitelisted TCP port 8080.
+[2025-06-26 13:47:45] [+] UFW rule created to block TCP port 8888.
+[2025-06-26 13:47:45] [x] TCP Port 8888 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:45] [+] UFW rule created to block TCP port 9999.
+[2025-06-26 13:47:45] [x] TCP Port 9999 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 13:47:58] [*] Verifying all detected port status on 192.168.0.156...
+[2025-06-26 13:47:58] [~] Skipping verification for whitelisted TCP port 80.
+[2025-06-26 13:47:58] [OK] TCP Port 1111 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 2222 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 3333 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 4444 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 5555 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 6666 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [~] Skipping verification for whitelisted TCP port 7070.
+[2025-06-26 13:47:58] [OK] TCP Port 7777 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [~] Skipping verification for whitelisted TCP port 8080.
+[2025-06-26 13:47:58] [OK] TCP Port 8888 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:47:58] [OK] TCP Port 9999 (Service: tcpwrapped) is CLOSED.
+[2025-06-26 13:48:11] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:48:11] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:48:11] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:48:11] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:48:23] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:48:33] [*] Log cleared by user.
+[2025-06-26 13:48:35] [*] Attempting to block 2 detected ports...
+[2025-06-26 13:48:35] [~] Skipping whitelisted TCP port 80.
+[2025-06-26 13:48:35] [~] Skipping whitelisted TCP port 7070.
+[2025-06-26 13:48:38] [*] Verifying all detected port status on 192.168.0.156...
+[2025-06-26 13:48:38] [~] Skipping verification for whitelisted TCP port 80.
+[2025-06-26 13:48:38] [~] Skipping verification for whitelisted TCP port 7070.
+[2025-06-26 13:52:36] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 13:52:37] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:52:37] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:52:37] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:52:37] [+] Running TCP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 13:52:49] [+] TCP Scan complete. Results saved to scan_result.txt
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 1111: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 2222: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 3333: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 4444: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 5555: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 6666: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 7777: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 8080: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 8888: 
+[2025-06-26 13:52:49] [!] Error getting process info for TCP port 9999: 
+[2025-06-26 13:52:57] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 13:52:57] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 13:52:57] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 13:52:57] [+] Running UDP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 14:12:39] [+] UDP Scan complete. Results saved to scan_result.txt
+[2025-06-26 14:21:48] [*] Attempting to block 12 detected ports...
+[2025-06-26 14:21:48] [+] UFW rule created to block TCP port 80.
+[2025-06-26 14:21:48] [x] TCP Port 80 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:48] [+] UFW rule created to block TCP port 1111.
+[2025-06-26 14:21:48] [x] TCP Port 1111 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:49] [+] UFW rule created to block TCP port 2222.
+[2025-06-26 14:21:49] [x] TCP Port 2222 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:49] [+] UFW rule created to block TCP port 3333.
+[2025-06-26 14:21:49] [x] TCP Port 3333 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:49] [+] UFW rule created to block TCP port 4444.
+[2025-06-26 14:21:49] [x] TCP Port 4444 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:49] [+] UFW rule created to block TCP port 5555.
+[2025-06-26 14:21:49] [x] TCP Port 5555 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:50] [+] UFW rule created to block TCP port 6666.
+[2025-06-26 14:21:50] [x] TCP Port 6666 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:50] [+] UFW rule created to block TCP port 7070.
+[2025-06-26 14:21:50] [x] TCP Port 7070 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:50] [+] UFW rule created to block TCP port 7777.
+[2025-06-26 14:21:50] [x] TCP Port 7777 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:50] [+] UFW rule created to block TCP port 8080.
+[2025-06-26 14:21:50] [x] TCP Port 8080 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:51] [+] UFW rule created to block TCP port 8888.
+[2025-06-26 14:21:51] [x] TCP Port 8888 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:21:51] [+] UFW rule created to block TCP port 9999.
+[2025-06-26 14:21:51] [x] TCP Port 9999 could not be verified as blocked. Manual check may be needed.
+[2025-06-26 14:26:34] [+] Local IP Detected: 192.168.0.156
+[2025-06-26 14:26:38] [*] Target IP/Range not specified, defaulting to local IP: 192.168.0.156
+[2025-06-26 14:26:38] [*] Checking for Docker image: uzyexe/nmap...
+[2025-06-26 14:26:38] [✓] Docker image uzyexe/nmap is already present locally.
+[2025-06-26 14:26:38] [+] Running UDP Nmap scan (Top 1000 Ports) on 192.168.0.156 ...
+[2025-06-26 14:46:29] [+] UDP Scan complete. Results saved to scan_result.txt
+[2025-06-26 14:46:29] [*] No open TCP or UDP ports detected to display.

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetShield - Choose Scan Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(to bottom right, #e2e8f0, #f0f2f5); /* Gradient from light blue to light gray */
+            color: #1e293b; /* Dark text for general content */
+            display: flex;
+            flex-direction: column; /* Allows footer to be pushed down */
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 60px; /* Space for a hypothetical fixed header, like in the image */
+        }
+
+        /* Placeholder for a top header bar, if you choose to add it later */
+        .top-header-placeholder {
+            background-color: #1a202c; /* Dark blue/black from image's top bar */
+            height: 60px; /* Standard header height */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem;
+            color: white; /* For any text within the header */
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .container {
+            /* This is the main white content box in the image */
+            max-width: 1000px; /* Adjusted to match wider content in image */
+            width: 95%;
+            padding: 2.5rem; /* Increased padding to match image */
+            background-color: #ffffff; /* White background as in image */
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center; /* All content inside is centered */
+            margin-bottom: 2rem; /* Space before the footer */
+        }
+
+        /* Styling for the H1 in your HTML, mimicking "Initiate a New Security Scan" style */
+        .container h1 {
+            color: #1e293b; /* Dark text */
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.5rem; /* Closer to the paragraph below */
+        }
+
+        /* Styling for the paragraph below H1 */
+        .container p.text-gray-300 { /* Targeting the specific paragraph */
+            color: #64748b; /* Gray text */
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 2.5rem; /* More space before the next section */
+        }
+
+        /* Styling for the section that contains the "Choose Scan Category" heading and buttons */
+        /* This targets your .bg-gray-700 div, now making it transparent/white as in image */
+        .container > div.bg-gray-700 { /* Target more specifically to avoid breaking other divs */
+            background-color: transparent; /* No background color for this section */
+            padding: 0; /* No padding here as it's handled by individual cards */
+            box-shadow: none; /* No shadow for this container itself */
+            border-radius: 0; /* No border radius */
+            margin-bottom: 0; /* Remove margin bottom if not needed */
+        }
+
+        /* Styling for the H2 "Choose Scan Category" */
+        .container > div.bg-gray-700 h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* semibold */
+            color: #1e293b; /* Dark text */
+            margin-bottom: 2rem; /* More space below the heading */
+            text-align: center; /* Centered */
+            padding-bottom: 1rem; /* Added padding to match image's border */
+            border-bottom: 1px solid #e2e8f0; /* Border below heading */
+        }
+
+        /* Responsive grid for scan categories */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for 3 columns like in image */
+            gap: 1.5rem; /* Gap between cards */
+            margin-top: 2rem; /* Add margin to separate from H2 */
+        }
+
+        /* Styling for each scan category button (now acting as a card) */
+        .scan-button {
+            background-color: #ffffff; /* White background for cards */
+            border: 1px solid #e2e8f0; /* Light border */
+            color: #1e293b; /* Dark text for title */
+            padding: 2rem; /* Increased padding for more space */
+            border-radius: 0.5rem; /* Rounded corners */
+            font-weight: 600;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column; /* Stack icon, title, description */
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            min-height: 180px; /* Consistent height for all cards */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow like the cards in image */
+        }
+
+        .scan-button:hover {
+            background-color: #ffffff; /* Keep white on hover */
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 6px 10px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+        }
+        .scan-button:active {
+            transform: translateY(0); /* Reset on click */
+        }
+
+        /* Styling for the icon within the scan card */
+        .scan-button .scan-card-icon {
+            font-size: 3rem; /* Large icon size */
+            margin-bottom: 1rem;
+            color: #3b82f6; /* blue-600 */
+        }
+
+        /* Styling for the text (category name) within the scan card */
+        .scan-button span:not(.scan-card-icon) { /* Target the text directly, if it's a span */
+             font-size: 1.125rem; /* text-lg for the title */
+             margin-top: 0.5rem; /* Space below icon */
+             margin-bottom: 0.25rem; /* Space before description */
+             color: #1e293b; /* Ensure dark color */
+        }
+
+        /* Styling for description, if you add a <p> tag inside your .scan-button */
+        .scan-button p {
+            font-size: 0.875rem; /* text-sm */
+            color: #64748b; /* slate-500 */
+            line-height: 1.4;
+            margin-top: 0.5rem; /* Added margin for separation */
+        }
+
+
+        /* Footer styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+        footer p {
+            margin: 0.25rem 0;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        /* Responsive grid adjustments */
+        @media (max-width: 1024px) { /* Adjust for smaller screens like tablets */
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) { /* Stack columns on very small screens */
+            .container {
+                padding: 1.5rem;
+                margin-top: 80px; /* Adjust margin for smaller screen header */
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .top-header-placeholder {
+                height: 50px;
+            }
+            body {
+                padding-top: 50px;
+            }
+            .container h1 {
+                font-size: 1.75rem;
+            }
+            .container p.text-gray-300 {
+                font-size: 1rem;
+            }
+            .container > div.bg-gray-700 h2 {
+                 font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-blue-400">Initiate New Scan</h1>
+        <p class="text-md md:text-lg text-gray-300 mb-8">Choose a scan category, then utilise the required scan type from the interface</p>
+
+        <div class="bg-gray-700 p-6 rounded-lg mb-8">
+            <h2 class="text-xl md:text-2xl font-semibold mb-6 text-gray-200">Choose Scan Category</h2>
+            <div class="grid-container">
+                <a href="/network_scanner" class="scan-button">
+                    <span class="scan-card-icon material-symbols-outlined">router</span> <span>Network Scanning</span>
+                    <p>Discover vulnerabilities in network scanning</p>
+                </a>
+                <a href="/zap_scanner" class="scan-button">
+                    <span class="scan-card-icon material-symbols-outlined">web_asset</span> <span>Web Application Scanning</span>
+                    <p>Discover vulnerabilities in web application scanning</p>
+                </a>
+                <a href="/ssl_scanner" class="scan-button">
+                    <span class="scan-card-icon material-symbols-outlined">lock</span> <span>SSL Scans</span>
+                    <p>Discover vulnerabilities in SSL scans</p>
+                </a>
+                
+                <a href="/chatbot" class="scan-button">
+                    <span class="scan-card-icon material-symbols-outlined">chat</span> <span>Security Chatbot</span>
+                    <p>Get AI-powered insights and analysis from your security reports</p>
+                </a>
+                </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 VulnScanAI. All rights reserved.</p>
+        <p>Product of Sec Services Pvt. Ltd. &copy; 2025</p>
+    </footer>
+</body>
+</html>

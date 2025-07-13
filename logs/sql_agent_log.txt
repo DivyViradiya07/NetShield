@@ -1,0 +1,11 @@
+[2025-07-09 12:22:41] [*] SQL log file cleared.
+[2025-07-09 12:22:41] [*] Ensure sqlmap is cloned into the 'Services/sqlmap-dev' directory:
+[2025-07-09 12:22:41] [*] git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git Services/sqlmap-dev
+[2025-07-09 12:22:41] [*] Also ensure you have installed sqlmap's dependencies (e.g., pip install -r Services/sqlmap-dev/requirements.txt)
+[2025-07-09 12:22:41] Attempting SQL Scan on: http://testphp.vulnweb.com/listproducts.php?cat=1
+[2025-07-09 12:22:41] [+] Running SQL scan on http://testphp.vulnweb.com/listproducts.php?cat=1 (Level: 3, Risk: 2)...
+[2025-07-09 12:22:41] [!] sqlmap.py not found at '/home/isec/Desktop/NetShield/Services/sqlmap-dev/sqlmap.py'.
+[2025-07-09 12:22:41] [!] Please ensure the sqlmap repository is cloned into a 'sqlmap-dev' directory inside the 'Services' folder.
+[2025-07-09 12:22:41] [!] Example: git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git Services/sqlmap-dev
+[2025-07-09 12:22:41] [!] SQL Scan failed.
+[2025-07-09 12:22:41] SQL Scanner demonstration finished.

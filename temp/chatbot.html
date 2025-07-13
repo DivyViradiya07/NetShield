@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze Report - VulnScanAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        /* IMPORTANT: Ensure html and body take full viewport height and manage overflow */
+        html, body {
+            height: 100%; /* Make html and body fill the viewport */
+            margin: 0;   /* Remove default margins */
+            padding: 0;  /* Remove default paddings */
+            overflow: hidden; /* This is crucial: Prevents the *browser's* main scrollbar */
+        }
+
+        /* Custom Scrollbar for chat-history */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; /* gray-300 */
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; /* gray-400 */
+        }
+
+        /* Message Bubbles - more distinct */
+        #chat-history .mb-4.items-end .p-3.rounded-lg { /* You messages */
+            margin-left: auto; /* Push to the right */
+            border-bottom-right-radius: 0.5rem; /* rounded-lg */
+            border-top-right-radius: 0.5rem; /* rounded-lg */
+            border-top-left-radius: 0.5rem; /* rounded-lg */
+        }
+
+        #chat-history .mb-4:not(.items-end) .p-3.rounded-lg { /* AI messages */
+            margin-right: auto; /* Push to the left */
+            border-bottom-left-radius: 0.5rem; /* rounded-lg */
+            border-top-left-radius: 0.5rem; /* rounded-lg */
+            border-top-right-radius: 0.5rem; /* rounded-lg */
+        }
+
+        /* Avatar Placeholder for messages (conceptual, can be added with JS) */
+        .message-avatar {
+            width: 32px; /* h-8 w-8 */
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+        .message-avatar.user {
+            background-color: #60a5fa; /* blue-400 */
+            margin-left: 0.75rem; /* ml-3 */
+        }
+        .message-avatar.ai {
+            background-color: #9ca3af; /* gray-400 */
+            margin-right: 0.75rem; /* mr-3 */
+        }
+    </style>
+</head>
+<body>
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col h-screen">
+        <div class="container mx-auto px-4 flex-grow flex flex-col min-h-0 py-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 flex-grow min-h-0">
+                <div class="md:col-span-1 flex flex-col min-h-0 space-y-6">
+                    <div class="bg-white rounded-xl shadow-xl p-5 flex-shrink-0 border border-gray-100">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Upload New Report</h2>
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="report_file" class="block text-gray-700 text-sm font-semibold mb-1">Upload Report (PDF, Max 100MB)</label>
+                                <input type="file" id="report_file" name="report_file" accept=".pdf"
+                                       class="block w-full text-gray-700 text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition duration-200"
+                                       required>
+                                <p class="text-gray-500 text-xs italic mt-1.5">Only PDF files under 100MB are supported.</p>
+                            </div>
+                            <div class="mb-5">
+                                <label for="llm_mode_selector" class="block text-gray-700 text-sm font-semibold mb-1">Choose AI Model:</label>
+                                <div class="relative">
+                                    <select id="llm_mode_selector" name="llm_mode"
+                                            class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-2.5 px-3 pr-8 rounded-lg leading-tight text-sm focus:outline-none focus:bg-white focus:border-blue-400 focus:ring-1 focus:ring-blue-400 cursor-pointer transition duration-200">
+                                        <option value="local" selected>iSec AI Model</option>
+                                        <option value="gemini">Google Gemini</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-gray-500 text-xs italic mt-1.5">Select iSec AI Model for Secure Analysis.</p>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" id="upload-button"
+                                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+                                    Upload & Analyze
+                                </button>
+                            </div>
+                            <div id="upload-error" class="text-red-500 text-sm mt-2 hidden text-center"></div>
+                        </form>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-xl p-5 text-gray-700 flex-grow overflow-y-auto border border-gray-100">
+                        <h2 class="text-xl font-bold mb-4">How to Use:</h2>
+                        <ol class="list-decimal list-inside space-y-2 text-sm">
+                            <li><strong>Upload Report:</strong> Use the form above to upload a PDF security report (e.g., Nmap, ZAP, SSLScan, MobSF).</li>
+                            <li><strong>Choose AI Model:</strong> Select 'iSec AI Model' for a Secure, reliable option, or 'Google Gemini' for a faster response.</li>
+                            <li><strong>AI Analysis:</strong> Our AI will process the report and provide an initial summary in the chat panel.</li>
+                            <li><strong>Chat with AI:</strong> Ask questions about the report's findings, vulnerabilities, or general cybersecurity concepts.</li>
+                        </ol>
+                        <p class="mt-4 text-xs text-gray-600 border-t pt-3 border-gray-200">
+                            For pre-analyzed reports (from 'Scan' page), the analysis will appear directly in the chat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 flex flex-col min-h-0">
+                    <div id="welcome-panel" class="bg-white rounded-xl shadow-xl p-6 flex flex-col flex-grow text-gray-700 text-center justify-center items-center border border-gray-100">
+                        <span class="material-symbols-outlined text-blue-500 text-8xl mb-4">security</span>
+                        <h2 class="text-2xl font-extrabold text-gray-900 mb-3">Welcome to VulnScanAI</h2>
+                        <p class="text-base text-gray-600 mb-2 max-w-xl leading-relaxed">
+                            Your intelligent cybersecurity assistant designed to streamline the analysis of security reports.
+                        </p>
+                        <p class="text-sm text-gray-500 mb-4 max-w-xl">
+                            Leveraging advanced AI models to process PDF security reports from various tools like Nmap, ZAP, SSLScan, MobSF, and more.
+                        </p>
+                        <div class="text-left text-gray-600 text-sm space-y-1.5 mb-5 max-w-md pl-6">
+                            <p class="font-bold mb-1">What can it do?</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Provide an initial summary of security vulnerabilities.</li>
+                                <li>Answer specific questions about findings, risks, and compliance.</li>
+                                <li>Explain complex cybersecurity concepts.</li>
+                                <li>Offer recommendations for remediation steps.</li>
+                                <li>Support interaction with both our own iSec AI model and Google Gemini.</li>
+                            </ul>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-3">
+                            Upload a PDF report on the left to get started with your analysis!
+                        </p>
+                    </div>
+
+                    <div id="chat-panel" class="bg-white rounded-xl shadow-xl p-6 flex flex-col flex-grow border border-gray-100 hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 pb-3 border-b border-gray-200 flex-shrink-0">AI Chat Assistant</h2>
+                        <div id="chat-history" class="flex-grow overflow-y-auto pr-3 mb-5 custom-scrollbar">
+                            <p id="chat-placeholder" class="text-gray-500 text-center py-6 text-base">Upload a report or select a pre-analyzed one to start chatting with the AI.</p>
+                            </div>
+                        <div class="flex items-center border-t border-gray-200 pt-4 flex-shrink-0">
+                            <input type="text" id="user-input"
+                                   class="flex-grow shadow-sm appearance-none border border-gray-300 rounded-full py-2.5 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 mr-3 transition duration-200 text-sm"
+                                   placeholder="Ask a question..." disabled>
+                            <button id="send-button"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled>
+                                <span class="material-symbols-outlined text-lg">send</span>
+                            </button>
+                        </div>
+                        <div id="chat-error" class="text-red-500 text-sm mt-2 hidden flex-shrink-0 text-center"></div>
+                    </div>
+
+                    <div id="loading-indicator" class="text-center mt-6 hidden flex-shrink-0">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                        <p class="mt-2 text-gray-600 text-base">Processing your report. Please wait...</p>
+                    </div>
+                </div>
+            </div>
+            <div id="copy-flash" class="fixed top-16 right-4 bg-green-100 text-green-700 px-3 py-1.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 z-50 flex items-center space-x-1.5">
+                <span class="material-symbols-outlined text-green-600 text-base">check_circle</span>
+                <span class="text-sm">Copied to clipboard!</span>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>

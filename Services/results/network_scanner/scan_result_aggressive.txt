@@ -1,0 +1,4 @@
+# Nmap 7.95 scan initiated Wed Jul  9 09:35:31 2025 as: /usr/lib/nmap/nmap -A -T4 -oG "/home/isec/Desktop/NetShield (2)/Services/results/network_scanner/scan_result_aggressive.txt" 192.168.0.156
+Host: 192.168.0.156 ()	Status: Up
+Host: 192.168.0.156 ()	Ports: 80/open/tcp//http//Apache httpd 2.4.63 ((Debian))/, 5000/open/tcp//http//Werkzeug httpd 3.1.3 (Python 3.13.3)/, 7070/open/tcp//ssl|realserver?///	Ignored State: closed (997)	OS: Linux 2.6.32|Linux 5.0 - 6.2	Seq Index: 259	IP ID Seq: All zeros
+# Nmap done at Wed Jul  9 09:35:43 2025 -- 1 IP address (1 host up) scanned in 12.87 seconds

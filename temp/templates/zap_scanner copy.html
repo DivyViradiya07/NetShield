@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetShield - ZAP Scanner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #f0f2f5, #e0e7f0);
+            color: #1a202c;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 60px;
+        }
+
+        /* Main content wrapper */
+        #page-wrapper {
+            flex: 1 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 0 auto 2rem;
+            padding: 2.5rem;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            flex: 1 0 auto;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+        footer p {
+            margin: 0.25rem 0;
+            font-size: 0.875rem;
+            color: white;
+        }
+
+        /* Existing styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Changed to a subtle blue gradient for the main background */
+            background: linear-gradient(to bottom right, #f0f2f5, #e0e7f0); /* Light gray to light blue gradient */
+            color: #1a202c; /* Dark text for general content */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px; /* Space for a hypothetical fixed header */
+        }
+    
+        /* Main container styling to match the home page's central white card */
+        .container {
+            max-width: 1200px; /* Adjusted for wider content of two panels */
+            width: 95%;
+            padding: 2.5rem; /* Increased padding */
+            background-color: #ffffff; /* White background */
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Soft shadow */
+            margin-bottom: 2rem; /* Space before footer */
+            flex-grow: 1; /* Allow container to grow and push footer down */
+            display: flex; /* Ensure inner panels are side-by-side */
+            border: 1px solid #e2e8f0; /* Subtle border for the main container */
+        }
+    
+        /* Remove dark background and shadow from inner panels */
+        .container > div {
+            background-color: #ffffff; /* Make inner panels white/light */
+            box-shadow: none; /* Remove shadows from inner panels */
+            padding: 0; /* Adjust padding if needed, assuming padding is on container */
+            border-radius: 0;
+        }
+    
+        /* Adjustments for the Left Panel */
+        .container > div:first-child {
+            padding-right: 1.5rem; /* Space between left and right panel content */
+            border-right: 1px solid #e2e8f0; /* Subtle separator line */
+            flex-basis: 33.333%; /* Approximately 1/3rd width */
+            flex-shrink: 0;
+        }
+    
+        /* Adjustments for the Right Panel */
+        .container > div:last-child {
+            padding-left: 1.5rem; /* Space between left and right panel content */
+            flex-basis: 66.667%; /* Approximately 2/3rd width */
+            flex-grow: 1;
+        }
+    
+        /* Headings */
+        h1.text-2xl.font-bold, h2.text-xl.font-bold, h3.text-lg.font-semibold, h4.text-md.font-semibold {
+            color: #1a202c; /* Dark text for headings */
+        }
+        
+        /* NetShield icon */
+        .netshield-icon { 
+            color: #7b2c99; /* A professional purple for the spider icon */
+        }
+    
+        /* Custom scrollbar for log output */
+        #logOutput::-webkit-scrollbar,
+        #resultsContent::-webkit-scrollbar,
+        .overflow-y-auto::-webkit-scrollbar { /* Added for table scrollbar */
+            width: 8px;
+        }
+        #logOutput::-webkit-scrollbar-track,
+        #resultsContent::-webkit-scrollbar-track,
+        .overflow-y-auto::-webkit-scrollbar-track {
+            background: #4a4a4a; /* Darker track for black background */
+            border-radius: 10px;
+        }
+        #logOutput::-webkit-scrollbar-thumb,
+        #resultsContent::-webkit-scrollbar-thumb,
+        .overflow-y-auto::-webkit-scrollbar-thumb {
+            background: #666666; /* Grey thumb */
+            border-radius: 10px;
+        }
+        #logOutput::-webkit-scrollbar-thumb:hover,
+        #resultsContent::-webkit-scrollbar-thumb:hover,
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+            background: #888888; /* Lighter grey on hover */
+        }
+        /* Spinner animation */
+        .spinner {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 2px solid #fff; /* White for dark buttons */
+            width: 16px;
+            height: 16px;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+            display: inline-block; /* Ensure it takes up space */
+            margin-left: 8px; /* Space between text and spinner */
+            vertical-align: middle; /* Align with text */
+        }
+    
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+    
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    
+        /* --- Button Styling Changes Start Here --- */
+    
+        /* Primary Action Buttons (Scan buttons) - Aligned with Network Scanner's primary */
+        .primary-scan-button {
+            background-color: #2c3e50; /* Deep Navy Blue */
+            color: #ffffff; /* White text */
+            border: 1px solid #2c3e50; /* Matching border */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More pronounced shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease;
+            font-weight: 600; /* font-semibold */
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+        }
+        .primary-scan-button:hover {
+            background-color: #3b506b; /* Slightly lighter navy on hover */
+            transform: translateY(-2px); /* Gentle lift effect */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+        }
+        .primary-scan-button:active {
+            transform: translateY(1px); /* Push down on active */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Reset shadow */
+        }
+    
+        /* Secondary Buttons (Back to Home, Clear Log, Refresh Results) - Aligned with Network Scanner's secondary */
+        .secondary-button {
+            background-color: #f1f5f9; /* Light grey background */
+            color: #4a5568; /* Darker text */
+            border: 1px solid #cbd5e1; /* Subtle border */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .secondary-button:hover {
+            background-color: #e2e8f0; /* Slightly darker grey on hover */
+            color: #1a202c; /* Even darker text on hover */
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .secondary-button:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+    
+        /* Spinner for secondary buttons */
+        .secondary-button .spinner {
+            border-top: 2px solid #4a5568; /* Darker spinner on light buttons */
+            border: 2px solid rgba(74, 85, 104, 0.3); /* Lighter track */
+        }
+        /* Spinner for primary buttons */
+        .primary-scan-button .spinner {
+            border-top: 2px solid #ffffff; /* White spinner on dark buttons */
+            border: 2px solid rgba(255, 255, 255, 0.3); /* Lighter white for spinner track */
+        }
+    
+        /* Copy Results Button - now also a secondary style variant */
+        #copyResultsBtn {
+            background-color: #e2e8f0; /* Similar to secondary button background */
+            color: #4a5568; /* Darker text */
+            border: 1px solid #cbd5e1; /* Subtle border */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+            opacity: 1; /* Ensure full opacity normally */
+        }
+        #copyResultsBtn:hover {
+            background-color: #d8dee9; /* Slightly darker on hover */
+            color: #1a202c; /* Even darker text on hover */
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        #copyResultsBtn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+    
+        /* --- Button Styling Changes End Here --- */
+    
+    
+        /* Focus styles for inputs */
+        input:focus, select:focus {
+            outline: 2px solid #2c3e50; /* Dark blue/navy ring on focus */
+            border-color: #2c3e50; /* Dark blue/navy border on focus */
+        }
+    
+        /* Input fields */
+        input[type="url"], input[type="text"], select {
+            background-color: #f8fafc; /* Very light gray */
+            border: 1px solid #cbd5e1; /* Light border */
+            color: #1a202c; /* Dark text */
+        }
+    
+        /* Scan Status Display */
+        #scanStatus {
+            background-color: #e2e8f0; /* Lighter background for status */
+            color: #1a202c; /* Dark text for status */
+            border: 1px solid #cbd5e1;
+        }
+    
+        /* Information Display (Last Scanned URL, Alert Counts) */
+        .info-label { /* Custom class for labels like "Last Scanned URL" */
+            color: #4a5568; /* Darker gray for general info text */
+        }
+        #lastScannedUrlDisplay {
+            color: #2c3e50; /* Dark blue/navy for highlighted URL */
+        }
+        #totalAlertsDisplay {
+            color: #ef4444; /* Red for total alerts */
+        }
+        #highAlertsDisplay {
+            color: #dc2626; /* Deeper red for high risk */
+        }
+        #mediumAlertsDisplay {
+            color: #f59e0b; /* Amber for medium risk */
+        }
+        #lowAlertsDisplay {
+            color: #eab308; /* Yellow for low risk */
+        }
+        #infoAlertsDisplay {
+            color: #3b82f6; /* Blue for informational alerts */
+        }
+    
+        /* Table empty state styling */
+        #zapAlertsTableBody tr:first-child:last-child td {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-size: 1rem; /* Slightly smaller for better fit */
+            color: #64748b; /* text-slate-500 */
+            font-style: italic;
+        }
+    
+        /* Detailed Alerts Table */
+        .alerts-table-container { /* Custom class for the table wrapper */
+            border: 1px solid #e2e8f0; /* Light border for table container */
+        }
+        .alerts-table { /* Custom class for the table itself */
+             border-color: #e2e8f0; /* Light border color for table rows */
+        }
+        .alerts-table-thead { /* Custom class for table header */
+            background-color: #f1f5f9; /* Light gray for table header */
+        }
+        .alerts-table-thead th {
+            color: #4a5568; /* Darker text for table headers */
+        }
+        .alerts-table-tbody { /* Custom class for table body */
+            background-color: #ffffff; /* White for table body */
+        }
+        .alerts-table-tbody td {
+            color: #4a5568; /* Darker text for table cells */
+        }
+        /* Table row hover state: text color becomes white, background becomes navy blue */
+        .alerts-table-tbody tr:hover {
+            background-color: #2c3e50; /* Deep Navy Blue for row hover */
+        }
+        .alerts-table-tbody tr:hover td {
+            color: #ffffff; /* White text on hover */
+        }
+    
+    
+        /* Log Output */
+        #logOutput {
+            background-color: #1a1a1a; /* Dark background for log (black) */
+            border: 1px solid #2c3e50; /* Dark blue/navy border */
+            color: #28a745; /* Green text for logs - good contrast on black */
+        }
+        
+        /* Results section styles */
+        #resultsTabs button {
+            transition: all 0.2s ease;
+            border-bottom: 2px solid transparent;
+            color: #64748b; /* Default tab text color (medium grey) */
+        }
+    
+        #resultsTabs button:hover {
+            color: #2c3e50; /* Dark blue/navy on hover */
+            border-color: #aebfd6; /* Lighter navy border on hover */
+        }
+    
+        #resultsTabs button.active {
+            color: #2c3e50; /* Dark blue/navy when active */
+            border-color: #2c3e50; /* Dark blue/navy border when active */
+        }
+    
+        #resultsContent {
+            min-height: 200px;
+            background-color: #1a1a1a; /* Dark background for results content (black) */
+            border: 1px solid #2c3e50; /* Dark blue/navy border */
+            color: #28a745; /* Green text for results - good contrast on black */
+        }
+    
+        /* Custom Message Box */
+        #customMessageBox {
+            background-color: #2c3e50; /* Dark blue/navy for consistent branding */
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: translateY(100%) translateX(0); /* Initial hidden state, adjusted for right-bottom positioning */
+            opacity: 0;
+        }
+        #customMessageBox.show {
+            transform: translateY(0) translateX(0);
+            opacity: 1;
+        }
+    
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column; /* Stack panels on smaller screens */
+                padding: 1.5rem;
+            }
+            .container > div:first-child {
+                padding-right: 0;
+                border-right: none;
+                padding-bottom: 1.5rem; /* Space between stacked panels */
+                border-bottom: 1px solid #e2e8f0; /* Separator for stacked panels */
+                margin-bottom: 1.5rem; /* Space after left panel when stacked */
+                flex-basis: auto; /* Reset flex-basis for stacking */
+            }
+            .container > div:last-child {
+                padding-left: 0;
+                flex-basis: auto; /* Reset flex-basis for stacking */
+            }
+        }
+        @media (max-width: 768px) {
+            body {
+                padding-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-wrapper">
+        <div class="container mx-auto p-4 flex flex-grow">
+            <div class="p-6 flex flex-col w-1/3 mr-4"> <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <span class="text-4xl mr-3 netshield-icon">🕷️</span>
+                        <h1 class="text-2xl font-bold">NetShield ZAP Scanner</h1> </div>
+                    <a href="{{ url_for('index') }}" class="px-4 py-2 rounded-lg transition-colors duration-200 flex items-center secondary-button">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                    </a>
+                </div>
+
+                <div class="space-y-4 flex-grow">
+                    <div class="mt-6">
+                        <label for="targetUrl" class="block text-sm font-medium info-label mb-1">Target URL:</label> <input type="url" id="targetUrl" placeholder="e.g., https://example.com" class="w-full p-2 rounded-md border focus:ring-blue-500 focus:border-blue-500"> </div>
+
+                    <button id="baselineScanBtn" class="w-full primary-scan-button focus:outline-none">
+                        <span class="button-text">1. Initiate Baseline Scan</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+
+                    <button id="fullScanBtn" class="w-full primary-scan-button focus:outline-none">
+                        <span class="button-text">2. Initiate Full Scan</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                    
+                    <button id="apiScanBtn" class="w-full primary-scan-button focus:outline-none">
+                        <span class="button-text">3. Initiate API Scan</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+
+                    <div id="apiScanInputs" class="hidden space-y-2 pl-2 border-l-2 border-gray-300"> <h4 class="text-md font-semibold">API Definition:</h4> <div>
+                            <label for="apiDefinitionPath" class="block text-sm font-medium info-label mb-1">Definition Path/URL:</label> <input type="text" id="apiDefinitionPath" placeholder="e.g., /path/to/openapi.json or https://example.com/api-docs" class="w-full p-2 rounded-md border focus:ring-blue-500 focus:border-blue-500"> </div>
+                        <div>
+                            <label for="apiFormat" class="block text-sm font-medium info-label mb-1">Format:</label> <select id="apiFormat" class="w-full p-2 rounded-md border focus:ring-blue-500 focus:border-blue-500"> <option value="">Select Format</option>
+                                <option value="openapi">OpenAPI / Swagger</option>
+                                <option value="soap">SOAP</option>
+                                <option value="graphql">GraphQL</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="scanStatus" class="text-center text-xl font-bold mt-4 p-2 rounded-md text-green-400">Ready</div> </div>
+            </div>
+
+            <div class="p-6 flex flex-col w-2/3"> <h2 class="text-xl font-bold mb-4">ZAP Scan Details & Log Output</h2> <div class="mb-4">
+                    <p class="text-sm info-label">Last Scanned URL: <span id="lastScannedUrlDisplay" class="font-bold">N/A</span></p> <p class="text-sm mt-2 info-label">Total Alerts: <span id="totalAlertsDisplay" class="font-bold">0</span></p> <p class="text-sm info-label">High Risk: <span id="highAlertsDisplay" class="font-bold">0</span></p> <p class="text-sm info-label">Medium Risk: <span id="mediumAlertsDisplay" class="font-bold">0</span></p> <p class="text-sm info-label">Low Risk: <span id="lowAlertsDisplay" class="font-bold">0</span></p> <p class="text-sm info-label">Informational: <span id="infoAlertsDisplay" class="font-bold">0</span></p> </div>
+
+                <h3 class="text-lg font-semibold mb-2">Detailed Alerts:</h3> <div class="overflow-x-auto rounded-lg alerts-table-container mb-4 max-h-64 overflow-y-auto">
+                    <table class="min-w-full divide-y alerts-table"> <thead class="alerts-table-thead sticky top-0"> <tr>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider rounded-tl-lg">Risk</th> <th scope="col" class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">Alert Name</th> <th scope="col" class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">URL</th> <th scope="col" class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider">Confidence</th> <th scope="col" class="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider rounded-tr-lg">Description</th> </tr>
+                        </thead>
+                        <tbody id="zapAlertsTableBody" class="divide-y alerts-table-tbody"> <tr>
+                                <td colspan="5" class="px-4 py-2 whitespace-nowrap text-center">No alerts found.</td> </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-lg font-semibold">Log Output</h3> <button id="clearLogBtn" class="text-xs font-semibold py-1.5 px-3 rounded-md secondary-button focus:outline-none"> <span class="button-text">Clear Log</span>
+                        <span class="spinner hidden"></span>
+                    </button>
+                </div>
+                <div id="logOutput" class="font-mono text-xs p-2 rounded-lg h-32 overflow-y-auto mb-4"></div> <div class="mb-2 flex-grow">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="text-md font-semibold">Raw Scan Reports</h3> <div class="flex space-x-1">
+                            <button id="refreshResultsBtn" class="text-xs font-semibold py-1 px-2 rounded-md secondary-button focus:outline-none flex items-center"> <i class="fas fa-sync-alt text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-2 border-b border-gray-300"> <ul class="flex flex-wrap -mb-px text-xs" id="resultsTabs" role="tablist">
+                            <li class="mr-1" role="presentation">
+                                <button class="inline-block p-1 border-b-2 rounded-t active" 
+                                        id="baseline-tab" data-tab="baseline" type="button" role="tab" aria-controls="baseline" aria-selected="true">
+                                    Baseline
+                                </button>
+                            </li>
+                            <li class="mr-1" role="presentation">
+                                <button class="inline-block p-1 border-b-2 rounded-t border-transparent" 
+                                        id="full-tab" data-tab="full" type="button" role="tab" aria-controls="full">
+                                    Full
+                                </button>
+                            </li>
+                            <li role="presentation">
+                                <button class="inline-block p-1 border-b-2 rounded-t border-transparent" 
+                                        id="api-tab" data-tab="api" type="button" role="tab" aria-controls="api">
+                                    API
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="relative">
+                        <button id="copyResultsBtn" class="absolute top-1 right-1 p-1 rounded-md text-xs" 
+                                title="Copy to clipboard"> <i class="far fa-copy"></i>
+                        </button>
+                        <pre id="resultsContent" class="font-mono text-xs p-2 rounded-lg h-48 overflow-y-auto whitespace-pre-wrap text-xs">
+                            Select a scan type to view raw JSON report.
+                        </pre> </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="customMessageBox" class="fixed bottom-4 right-4 p-3 rounded-lg shadow-lg z-50 transition-transform transform translate-y-full opacity-0"></div>
+
+        <script src="{{ url_for('static', filename='js/zap_scanner.js') }}"></script>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 VulnScanAI. All rights reserved.</p>
+        <p>Product of Sec Services Pvt. Ltd. &copy; 2025</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Nmap 7.80 scan initiated Tue Jul  8 08:06:20 2025 as: nmap -sS --exclude-ports 5000 -sV -Pn -T4 -oG - 192.168.0.156
+Host: 192.168.0.156 ()	Status: Up
+Host: 192.168.0.156 ()	Ports: 80/open/tcp//http//Apache httpd 2.4.63 ((Debian))/, 7070/open/tcp//ssl///	Ignored State: closed (998)
+# Nmap done at Tue Jul  8 08:06:31 2025 -- 1 IP address (1 host up) scanned in 11.28 seconds

@@ -1,0 +1,278 @@
+2025-07-10 12:19:47,139 - WARNING -  * Debugger is active!
+2025-07-10 12:19:47,139 - INFO -  * Debugger PIN: 115-116-289
+2025-07-10 12:20:09,210 - INFO -  * Detected change in '/home/isec/Desktop/NetShield/routes/chatbot_bp.py', reloading
+2025-07-10 12:20:09,391 - WARNING -  * Debugger is active!
+2025-07-10 12:20:09,391 - INFO -  * Debugger PIN: 115-116-289
+2025-07-10 12:20:16,225 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.156:5000
+2025-07-10 12:20:16,225 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 12:20:16,225 - INFO -  * Restarting with stat
+2025-07-10 12:20:16,368 - WARNING -  * Debugger is active!
+2025-07-10 12:20:16,368 - INFO -  * Debugger PIN: 115-116-289
+2025-07-10 12:20:44,833 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.156:5000
+2025-07-10 12:20:44,833 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 12:20:44,834 - INFO -  * Restarting with stat
+2025-07-10 12:20:44,981 - WARNING -  * Debugger is active!
+2025-07-10 12:20:44,981 - INFO -  * Debugger PIN: 115-116-289
+2025-07-10 12:24:28 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:24:30 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:27:20 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:27:38 - chatbot - INFO - Stored FastAPI session ID: 2a6975ac-9641-4aaf-87b8-35ad48e74cac with LLM mode: gemini
+2025-07-10 12:30:28 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:30:45 - chatbot - INFO - Stored FastAPI session ID: b42c5995-5b4f-43a2-b0f0-7a58bce97fa8 with LLM mode: gemini
+2025-07-10 12:31:24 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:31:41 - chatbot - INFO - Stored FastAPI session ID: c5031e40-bcd7-4a2e-9373-3ee94774a0db with LLM mode: gemini
+2025-07-10 12:33:30 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:33:49 - chatbot - INFO - Stored FastAPI session ID: 1ae9a88c-10a9-4a12-b6c9-7ed8dfeedc2a with LLM mode: gemini
+2025-07-10 12:36:43 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:36:43 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:37:03 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:37:20 - chatbot - INFO - Stored FastAPI session ID: c31afc72-e89d-4075-a2ac-1510875dd948 with LLM mode: gemini
+2025-07-10 12:40:06 - chatbot - INFO - New chat session started: a27f4876-78e3-40de-ad7c-f06e1956eee5
+2025-07-10 12:41:04 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:41:24 - chatbot - INFO - Stored FastAPI session ID: 0a156304-698e-42b8-adfa-9f089c59d180 with LLM mode: gemini
+2025-07-10 12:47:41 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:48:00 - chatbot - INFO - Stored FastAPI session ID: 68cc15df-0418-4557-b5ef-613a770732ac with LLM mode: gemini
+2025-07-10 12:53:07 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:53:07 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:53:13 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:53:13 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 12:54:11 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:54:32 - chatbot - INFO - Stored FastAPI session ID: 0b3af90c-54e7-4387-93b9-49b018f15a32 with LLM mode: gemini
+2025-07-10 12:56:45 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 12:57:03 - chatbot - INFO - Stored FastAPI session ID: a15d670f-3a9e-42b9-93db-17aca12ba510 with LLM mode: gemini
+2025-07-10 13:04:30 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:04:30 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:04:34 - chatbot - INFO - New chat session started: 5efd1b8d-9400-412f-8f84-3357f927c683
+2025-07-10 13:04:48 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 13:05:06 - chatbot - INFO - Stored FastAPI session ID: 2323ae1d-5a9f-442f-b9dd-47690afccb5b with LLM mode: gemini
+2025-07-10 13:06:02 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 13:06:20 - chatbot - INFO - Stored FastAPI session ID: dd7d8875-1255-4101-a00d-2d64d0176915 with LLM mode: gemini
+2025-07-10 13:29:41 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:29:41 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:29:44 - chatbot - INFO - New chat session started: cb251eaf-76d7-42ff-ae83-5385aba148ff
+2025-07-10 13:31:44 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:31:45 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 13:38:52 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 13:39:11 - chatbot - INFO - Stored FastAPI session ID: a9106514-6ac0-4e8f-a11f-06940e4c4b40 with LLM mode: gemini
+2025-07-10 13:41:27 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 13:41:45 - chatbot - INFO - Stored FastAPI session ID: 3ee3450f-72b5-451c-8332-db9c15bb7528 with LLM mode: gemini
+2025-07-10 13:46:32 - chatbot - INFO - New chat session started: af81972d-0721-493b-a021-a1177976822b
+2025-07-10 13:48:38 - chatbot - INFO - New chat session started: 7c0d4195-68ce-4c7a-b491-f1e1e2e0d444
+2025-07-10 13:54:42 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 13:55:00 - chatbot - INFO - Stored FastAPI session ID: 95b9da2c-bc57-4ab5-a779-00fd627fe494 with LLM mode: gemini
+2025-07-10 13:59:45 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:00:03 - chatbot - INFO - Stored FastAPI session ID: 38bb55ec-5447-4afe-a139-0bf3dd1b7ee2 with LLM mode: gemini
+2025-07-10 14:01:48 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:02:09 - chatbot - INFO - Stored FastAPI session ID: e698521e-c472-4fb8-853a-89cb6874c39a with LLM mode: gemini
+2025-07-10 14:04:01 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:04:19 - chatbot - INFO - Stored FastAPI session ID: 32d73c19-4ef7-4208-83aa-2d26a57cac25 with LLM mode: gemini
+2025-07-10 14:05:17 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:05:39 - chatbot - INFO - Stored FastAPI session ID: d55dabbb-f92f-45af-b20f-8ae851d338d6 with LLM mode: gemini
+2025-07-10 14:11:26 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:11:43 - chatbot - INFO - Stored FastAPI session ID: ac348635-6200-4c89-9b1b-6b2ff1ec14dc with LLM mode: gemini
+2025-07-10 14:17:02 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:17:20 - chatbot - INFO - Stored FastAPI session ID: 1c2575f6-5ab2-41fc-ad70-e03a5d7f85af with LLM mode: gemini
+2025-07-10 14:17:41 - chatbot - INFO - Sending chat message to FastAPI for session 1c2575f6-5ab2-41fc-ad70-e03a5d7f85af (LLM mode: gemini)
+2025-07-10 14:42:13 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:44:05 - chatbot - ERROR - Error communicating with FastAPI backend during upload: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-07-10 14:44:29 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:45:57 - chatbot - ERROR - Error communicating with FastAPI backend during upload: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-07-10 14:46:23 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:46:34 - chatbot - INFO - Stored FastAPI session ID: b4b4b965-a7a2-4666-a6d2-e588ecbc8091 with LLM mode: gemini
+2025-07-10 14:47:36 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:48:32 - chatbot - INFO - Stored FastAPI session ID: f1c64398-5105-4fe3-afee-23fe57b205a4 with LLM mode: gemini
+2025-07-10 14:48:48 - chatbot - INFO - Sending file to FastAPI (local mode): http://192.168.0.156:8000/upload_report?llm_mode=local
+2025-07-10 14:51:18 - chatbot - INFO - Stored FastAPI session ID: 8a7881f0-d548-4938-a7bf-0ffd3d00e540 with LLM mode: local
+2025-07-10 14:51:43 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:52:01 - chatbot - INFO - Stored FastAPI session ID: 9eba9d38-7ca4-4511-85b5-4ce3576b65ac with LLM mode: gemini
+2025-07-10 14:56:50 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 14:57:09 - chatbot - INFO - Stored FastAPI session ID: 2ddf124e-dde7-45fa-b2d4-1bc0642f6ec4 with LLM mode: gemini
+2025-07-10 15:00:48 - chatbot - INFO - New chat session started: ed77d5f3-7ac0-45a1-ab0b-5049202bb48f
+2025-07-10 15:12:44 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:13:02 - chatbot - INFO - Stored FastAPI session ID: c5a03636-d7f9-4d17-a3b8-f9964874674f with LLM mode: gemini
+2025-07-10 15:13:42 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:13:59 - chatbot - INFO - Stored FastAPI session ID: 5b8323d2-5139-4a78-a529-c28bc855a90d with LLM mode: gemini
+2025-07-10 15:16:20 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:16:37 - chatbot - INFO - Stored FastAPI session ID: d23dc9b5-9657-4427-834e-262b25b1c554 with LLM mode: gemini
+2025-07-10 15:21:10 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:21:19 - chatbot - INFO - Stored FastAPI session ID: 947f26ef-44e1-4d9c-9619-8113d70e8f1d with LLM mode: gemini
+2025-07-10 15:22:19 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:22:28 - chatbot - INFO - Stored FastAPI session ID: 99a0ff5b-aebc-46a6-8c65-7bec995841da with LLM mode: gemini
+2025-07-10 15:24:17 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:24:26 - chatbot - INFO - Stored FastAPI session ID: bc6dbc54-4562-4afe-bace-948ae412e8a5 with LLM mode: gemini
+2025-07-10 15:32:40 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:32:50 - chatbot - INFO - Stored FastAPI session ID: a8509231-95aa-4997-9544-d8304d68026f with LLM mode: gemini
+2025-07-10 15:34:56 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:35:05 - chatbot - INFO - Stored FastAPI session ID: 8fe234df-4f2e-4b97-af4a-66d8d28efd89 with LLM mode: gemini
+2025-07-10 15:38:51 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:38:59 - chatbot - INFO - Stored FastAPI session ID: 6eaabdcb-9a2a-4cb2-b695-f7ebb9ecddea with LLM mode: gemini
+2025-07-10 15:40:01 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:40:09 - chatbot - INFO - Stored FastAPI session ID: 82633c49-ae38-4a42-b71d-668d770f5750 with LLM mode: gemini
+2025-07-10 15:42:14 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:42:23 - chatbot - INFO - Stored FastAPI session ID: aff3761f-0d22-4e3d-9189-dd0466de2556 with LLM mode: gemini
+2025-07-10 15:44:39 - chatbot - INFO - New chat session started: b323d892-b7d3-4b34-a106-e361911da820
+2025-07-10 15:46:03 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:46:11 - chatbot - INFO - Stored FastAPI session ID: dc90fe1e-9e1b-4208-a888-86a6ae1d1ad2 with LLM mode: gemini
+2025-07-10 15:49:55 - chatbot - INFO - New chat session started: 4f69b800-46ea-4ff8-85a9-e81cb1117d20
+2025-07-10 15:51:37 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-10 15:51:45 - chatbot - INFO - Stored FastAPI session ID: 8c14cd21-49c0-455a-98ef-434412e46ff7 with LLM mode: gemini
+2025-07-10 16:03:47 - chatbot - INFO - Sending chat message to FastAPI for session 8c14cd21-49c0-455a-98ef-434412e46ff7 (LLM mode: gemini)
+2025-07-10 16:04:44 - chatbot - INFO - Sending chat message to FastAPI for session 8c14cd21-49c0-455a-98ef-434412e46ff7 (LLM mode: gemini)
+2025-07-10 16:05:25 - chatbot - INFO - Sending chat message to FastAPI for session 8c14cd21-49c0-455a-98ef-434412e46ff7 (LLM mode: gemini)
+2025-07-10 16:17:27 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 16:17:27 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-10 16:17:31 - chatbot - INFO - New chat session started: 3c4768be-fa21-4077-bcfb-2c19eeec7be6
+2025-07-10 16:23:26 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 09:35:39 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:35:39 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:35:45 - chatbot - INFO - New chat session started: d68de426-160b-48a9-a460-e59788a308b9
+2025-07-11 09:47:38 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:47:38 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:53:04 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:54:43 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:54:43 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 09:54:47 - chatbot - INFO - New chat session started: 3dc74cec-8ddc-4e31-8d42-87eba3b625fc
+2025-07-11 09:56:49 - chatbot - INFO - Sending file to FastAPI (gemini mode): http://192.168.0.156:8000/upload_report?llm_mode=gemini
+2025-07-11 09:57:07 - chatbot - INFO - Stored FastAPI session ID: d5e2737e-8b8f-4324-8971-7aa025e93da1 with LLM mode: gemini
+2025-07-11 09:57:14 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 09:57:46 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:01:37 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:05:33 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:05:33 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:05:39 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:06:08 - chatbot - INFO - Sending chat message to FastAPI for session d5e2737e-8b8f-4324-8971-7aa025e93da1 (LLM mode: gemini)
+2025-07-11 10:06:49 - chatbot - INFO - Sending chat message to FastAPI for session d5e2737e-8b8f-4324-8971-7aa025e93da1 (LLM mode: gemini)
+2025-07-11 10:07:21 - chatbot - INFO - Sending chat message to FastAPI for session d5e2737e-8b8f-4324-8971-7aa025e93da1 (LLM mode: gemini)
+2025-07-11 10:07:43 - chatbot - INFO - Updated Flask session with new FastAPI session ID: 87ece767-2d70-4a53-bf1d-f4ad69a1a122
+2025-07-11 10:07:48 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:10:25 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:10:54 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:12:11 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:12:11 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:12:38 - chatbot - INFO - Sending chat message to FastAPI for session 87ece767-2d70-4a53-bf1d-f4ad69a1a122 (LLM mode: gemini)
+2025-07-11 10:13:01 - chatbot - INFO - Updated Flask session with new FastAPI session ID: a4344c8e-7f93-486f-bbc9-b068471aec95
+2025-07-11 10:13:06 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:14:21 - chatbot - ERROR - Error clearing chat with FastAPI chatbot service: 404 Client Error: Not Found for url: http://192.168.0.156:8000/clear_chat
+2025-07-11 10:18:00 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:19:05 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:20:25 - chatbot - ERROR - Error communicating with FastAPI chat service: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 516, in getresponse
+    httplib_response = super().getresponse()
+  File "/usr/lib/python3.13/http/client.py", line 1430, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/isec/Desktop/NetShield/routes/chatbot_bp.py", line 155, in handle_incoming_chat_from_frontend
+    fastapi_response = requests.post(
+        f"{FASTAPI_BACKEND_URL}/chat",
+        json=payload_to_fastapi
+    )
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 682, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2025-07-11 10:20:56 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:20:56 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:22:19 - chatbot - INFO - Flask session ID updated to: 6cd8c8be-3583-4f7b-a876-5e300e74ec01
+2025-07-11 10:22:37 - chatbot - INFO - New chat session started: a56a0acf-1842-4141-8c53-80ccf17f0131
+2025-07-11 10:23:02 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:23:03 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:33:04 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:33:05 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:33:50 - chatbot - INFO - New chat session started: 79032ed5-30d3-4a7f-b296-f457af71cd4b
+2025-07-11 10:35:47 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:35:50 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:35:52 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:35:54 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:37:14 - chatbot - INFO - Flask session ID updated to: 07fdf513-8ac9-42b0-af04-8ed1d7359472
+2025-07-11 10:51:52 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:51:53 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 10:57:58 - chatbot - INFO - New chat session started: 8b27c313-d990-4a23-a235-73c8c2880512
+2025-07-11 11:32:25 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 11:32:25 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 11:55:40 - chatbot - INFO - New chat session started: 105127f4-542d-4d98-9085-7613d6c0a6b9
+2025-07-11 12:20:39 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 12:20:39 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 12:21:01 - chatbot - INFO - New chat session started: 7b574b99-5fd1-44ee-8c43-22c2345d0771
+2025-07-11 14:36:52 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 14:36:52 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-11 14:41:47 - chatbot - INFO - New chat session started: 6ace2a13-bb04-42a2-adf6-73d6d2bd83b2
+2025-07-11 15:17:07 - chatbot - INFO - New chat session started: da4a8981-8653-417b-8bf5-af91e5fa82c2
+2025-07-11 16:01:22 - chatbot - INFO - New chat session started: a0fda28b-e923-4eff-a77a-886aca3eb611
+2025-07-11 16:04:32 - chatbot - INFO - New chat session started: d808f103-4337-45b2-85f8-5e6df37c0981
+2025-07-12 14:38:16 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-12 14:38:20 - chatbot - INFO - Chatbot Blueprint initialized
+2025-07-12 14:39:06 - chatbot - INFO - New chat session started: bba08c72-8621-42c2-9f71-f7fd417eb03d
+2025-07-12 14:40:33 - chatbot - INFO - New chat session started: 6115626a-72ed-4315-95cc-d2b07930f00e
